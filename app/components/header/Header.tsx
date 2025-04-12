@@ -17,9 +17,10 @@ export default function Header() {
             <Image
               src="/headerlogo.png"
               alt="AyAm Retreat Logo"
-              width={48} // approximate to h-12 (12 * 4 = 48px)
+              width={48}
               height={48}
               className="h-12 w-auto"
+              unoptimized
             />
           </div>
         </div>

@@ -9,7 +9,6 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-50 py-12 px-4 md:px-8 lg:px-16">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
           <div className="md:col-span-1">
             <div className="mb-4">
               <Link href="/">

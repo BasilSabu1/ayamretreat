@@ -34,19 +34,19 @@ const BannerCarousel: React.FC = () => {
         {
           id: 1,
           iconUrl: "/bannerbottomrightlogo/Untouchedtrails.png",
-          iconText: "Untouched\ntrails"
+          iconText: "Untouched\ntrails",
         },
         {
           id: 2,
           iconUrl: "/bannerbottomrightlogo/Mountainserenity.png",
-          iconText: "Mountain\nserenity"
+          iconText: "Mountain\nserenity",
         },
         {
           id: 3,
           iconUrl: "/bannerbottomrightlogo/Naturehikes.png",
-          iconText: "Nature\nhikes"
-        }
-      ]
+          iconText: "Nature\nhikes",
+        },
+      ],
     },
     {
       id: 2,
@@ -59,19 +59,19 @@ const BannerCarousel: React.FC = () => {
         {
           id: 1,
           iconUrl: "/bannerbottomrightlogo/Vayaloram1.png",
-          iconText: "Backwaters"
+          iconText: "Backwaters",
         },
         {
           id: 2,
           iconUrl: "/bannerbottomrightlogo/Vayaloram2.png",
-          iconText: "Paddy fields"
+          iconText: "Paddy fields",
         },
         {
           id: 3,
           iconUrl: "/bannerbottomrightlogo/Vayaloram3.png",
-          iconText: "Local cuisine"
-        }
-      ]
+          iconText: "Local cuisine",
+        },
+      ],
     },
     {
       id: 3,
@@ -79,24 +79,24 @@ const BannerCarousel: React.FC = () => {
       location: "AdventureBay,Marari",
       description:
         "Where the land meets the sea and thrill meets tranquility. Adventure Bay is your gateway to coastal escapades — from kayaking through mangroves and hidden coves to evenings around beachside bonfires. Bold, untamed, and buzzing with energy, this retreat is made for the spirited soul who seeks movement, meaning, and moments that stay.",
-      imageUrl: "/banner/Bay.png",
+      imageUrl: "/banner/adventure.png",
       featureIcons: [
         {
           id: 1,
           iconUrl: "/bannerbottomrightlogo/Bay1.png",
-          iconText: "Water sports"
+          iconText: "Water sports",
         },
         {
           id: 2,
           iconUrl: "/bannerbottomrightlogo/Bay3.png",
-          iconText: "Beach trails"
+          iconText: "Beach trails",
         },
         {
           id: 3,
           iconUrl: "/bannerbottomrightlogo/Bay2.png",
-          iconText: "Calm yet thrilling"
-        }
-      ]
+          iconText: "Calm yet thrilling",
+        },
+      ],
     },
     {
       id: 4,
@@ -109,44 +109,44 @@ const BannerCarousel: React.FC = () => {
         {
           id: 1,
           iconUrl: "/bannerbottomrightlogo/Saantara1.png",
-          iconText: "Cultural immersion"
+          iconText: "Cultural immersion",
         },
         {
           id: 2,
           iconUrl: "/bannerbottomrightlogo/Saantara2.png",
-          iconText: "Heritage architecture"
+          iconText: "Heritage architecture",
         },
         {
           id: 3,
           iconUrl: "/bannerbottomrightlogo/Saantara3.png",
-          iconText: "Ayurveda"
-        }
-      ]
+          iconText: "Ayurveda",
+        },
+      ],
     },
     {
       id: 5,
-      title: "Tea Garden Hideaway",
-      location: "Vagamon, Kerala",
+      title: "Kailasam",
+      location: "Idukki, Kerala",
       description:
-        "Surrounded by endless waves of emerald tea plantations, this exclusive retreat offers a glimpse into Kerala's rich agricultural heritage while providing a peaceful sanctuary for relaxation and rejuvenation.",
-      imageUrl: "/banner/Drifters_Valley.png",
+        "Shrouded in mist and myth, Kailasam rises like a whisper from the earth — a place where ancient energy flows and the spirit feels held. Set high in the hills, this retreat invites you into stillness, sacred stories, and the quiet power of presence. A haven for seekers, dreamers, and those drawn to the mystical rhythm of the mountains.",
+      imageUrl: "/banner/Saantara.png",
       featureIcons: [
         {
           id: 1,
           iconUrl: "/bannerbottomrightlogo/Untouchedtrails.png",
-          iconText: "Untouched\ntrails"
+          iconText: "Mountain wellness",
         },
         {
           id: 2,
           iconUrl: "/bannerbottomrightlogo/Mountainserenity.png",
-          iconText: "Mountain\nserenity"
+          iconText: "Yoga",
         },
         {
           id: 3,
           iconUrl: "/bannerbottomrightlogo/Naturehikes.png",
-          iconText: "Nature\nhikes"
-        }
-      ]
+          iconText: "NO alcohol",
+        },
+      ],
     },
   ];
 
@@ -183,7 +183,6 @@ const BannerCarousel: React.FC = () => {
               className="w-full h-full bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.imageUrl})` }}
             />
-            
 
             <div className="absolute inset-0 flex flex-col justify-center z-20 px-4 sm:px-8 md:px-16 lg:px-24">
               <div className="max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl mx-auto md:mx-0">
@@ -223,9 +222,9 @@ const BannerCarousel: React.FC = () => {
         ))}
       </div>
 
-      {/* Feature Icons Section - Now Dynamic Based on Current Slide */}
+      {/* Feature Icons Section */}
       <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 w-full md:w-auto md:right-6 lg:right-16 z-30">
-        <div className="text-center md:text-right mb-1 sm:mb-2">
+        <div className="text-center md:text-right mb-1   sm:mb-2">
           <h3 className="text-xs sm:text-sm md:text-lg lg:text-xl text-white font-medium">
             Explore the Unexplored
           </h3>
@@ -233,7 +232,7 @@ const BannerCarousel: React.FC = () => {
         <div className="flex items-center justify-center md:justify-end space-x-6 sm:space-x-8 md:space-x-8">
           {bannerSlides[currentSlide].featureIcons.map((icon) => (
             <div key={icon.id} className="flex flex-col items-center">
-              <div className="rounded-full p-1.5 sm:p-2 md:p-3 mb-0.5 sm:mb-1 md:mb-2 hover:bg-blue-400">
+              <div className="rounded-full p-1.5 sm:p-2  md:p-3 mb-0.5 sm:mb-1 md:mb-2 hover:bg-blue-400">
                 <Image
                   src={icon.iconUrl}
                   alt={icon.iconText.replace("\n", " ")}
@@ -242,7 +241,7 @@ const BannerCarousel: React.FC = () => {
                   className="h-6 w-6 sm:h-5 sm:w-5 md:h-10 md:w-10"
                 />
               </div>
-              <span className="text-xxs xs:text-tiny sm:text-xs text-center text-white leading-tight hover:text-blue-600">
+              <span className="text-xxs xs:text-tiny  sm:text-xs text-center text-white leading-tight hover:text-blue-600">
                 {icon.iconText.split("\n")[0]}
                 <br />
                 {icon.iconText.split("\n")[1]}

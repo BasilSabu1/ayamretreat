@@ -34,50 +34,46 @@ const AboutUs: React.FC = () => {
           </div>
 
           {/* Mobile Images  */}
-          <div className="flex flex-wrap justify-center gap-4 my-8 md:hidden">
-            <div className="w-1/3 max-w-24">
+          {/* Mobile Images - Updated layout */}
+          <div className="flex flex-wrap justify-center gap-2 my-6 md:hidden">
+            <div className="w-5/12 max-w-[160px]">
               <Image
                 src="/aboutus/aboutus1.png"
                 alt="Waterfall in mountains"
                 width={200}
                 height={250}
-                className="rounded"
+                className="rounded object-cover w-full h-full"
+                style={{ aspectRatio: "4/5" }}
               />
             </div>
-            <div className="w-1/3 max-w-24">
+            <div className="w-5/12 max-w-[160px]">
               <Image
                 src="/aboutus/aboutus2.png"
                 alt="Sunset over water with people"
                 width={200}
                 height={150}
-                className="rounded"
+                className="rounded object-cover w-full h-full"
+                style={{ aspectRatio: "4/3" }}
               />
             </div>
-            <div className="w-1/3 max-w-24">
-              <Image
-                src="/aboutus/aboutus5.png"
-                alt="River with trees"
-                width={200}
-                height={150}
-                className="rounded"
-              />
-            </div>
-            <div className="w-1/3 max-w-24">
+            <div className="w-5/12 max-w-[160px] mt-2">
               <Image
                 src="/aboutus/aboutus3.png"
                 alt="Mountain landscape with rice fields"
                 width={200}
                 height={150}
-                className="rounded"
+                className="rounded object-cover w-full h-full"
+                style={{ aspectRatio: "4/3" }}
               />
             </div>
-            <div className="w-1/3 max-w-24">
+            <div className="w-5/12 max-w-[160px] mt-2">
               <Image
                 src="/aboutus/aboutus4.png"
                 alt="Sunset over lake"
                 width={200}
                 height={150}
-                className="rounded"
+                className="rounded object-cover w-full h-full"
+                style={{ aspectRatio: "4/3" }}
               />
             </div>
           </div>
