@@ -27,23 +27,29 @@ export default function Header() {
         {/* Navigation - desktop - positioned more to the right */}
         <nav className="hidden md:flex items-center ml-auto mr-20">
           <div className="flex space-x-12">
-            <a href="#about" className="text-gray-800 hover:text-blue-500">
+            <a
+              href="#about"
+              className="text-gray-800 hover:text-blue-500 text-lg"
+            >
               About us
             </a>
             <a
               href="#testimonials"
-              className="text-gray-800 hover:text-blue-500"
+              className="text-gray-800 hover:text-blue-500 text-lg"
             >
               Testimonials
             </a>
-            <a href="#blog" className="text-gray-800 hover:text-blue-500">
+            <a
+              href="#blog"
+              className="text-gray-800 hover:text-blue-500 text-lg"
+            >
               Blog
             </a>
           </div>
         </nav>
 
         {/* Account button */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 text-lg">
           <a
             href="#account"
             className="hidden md:flex items-center text-gray-800 hover:text-blue-500"
@@ -76,19 +82,39 @@ export default function Header() {
       <div className="w-full bg-gray-100 overflow-hidden whitespace-nowrap py-2 text-sm">
         <div className="marquee relative flex overflow-x-hidden">
           <div className="marquee-content py-0 animate-marquee whitespace-nowrap flex">
-            <span className="mx-4">• Website currently under construction </span>
-            <span className="mx-4">• Website currently under construction </span>
-            <span className="mx-4">• Website currently under construction </span>
-            <span className="mx-4">• Website currently under construction </span>
-            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
           </div>
 
           <div className="marquee-content absolute top-0 py-0 animate-marquee2 whitespace-nowrap flex">
-            <span className="mx-4">• Website currently under construction </span>
-            <span className="mx-4">• Website currently under construction </span>
-            <span className="mx-4">• Website currently under construction </span>
-            <span className="mx-4">• Website currently under construction </span>
-            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
+            <span className="mx-4 text-lg">
+              • Website currently under construction{" "}
+            </span>
           </div>
         </div>
       </div>
