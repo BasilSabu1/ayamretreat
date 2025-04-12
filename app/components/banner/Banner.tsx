@@ -79,7 +79,7 @@ const BannerCarousel: React.FC = () => {
       location: "AdventureBay,Marari",
       description:
         "Where the land meets the sea and thrill meets tranquility. Adventure Bay is your gateway to coastal escapades — from kayaking through mangroves and hidden coves to evenings around beachside bonfires. Bold, untamed, and buzzing with energy, this retreat is made for the spirited soul who seeks movement, meaning, and moments that stay.",
-      imageUrl: "/banner/AdventureBay.png",
+      imageUrl: "/banner/Bay.png",
       featureIcons: [
         {
           id: 1,
@@ -183,6 +183,7 @@ const BannerCarousel: React.FC = () => {
               className="w-full h-full bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.imageUrl})` }}
             />
+            
 
             <div className="absolute inset-0 flex flex-col justify-center z-20 px-4 sm:px-8 md:px-16 lg:px-24">
               <div className="max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl mx-auto md:mx-0">
