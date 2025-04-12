@@ -76,19 +76,19 @@ export default function Header() {
       <div className="w-full bg-gray-100 overflow-hidden whitespace-nowrap py-2 text-sm">
         <div className="marquee relative flex overflow-x-hidden">
           <div className="marquee-content py-0 animate-marquee whitespace-nowrap flex">
-            <span className="mx-4">Website currently under construction •</span>
-            <span className="mx-4">Website currently under construction •</span>
-            <span className="mx-4">Website currently under construction •</span>
-            <span className="mx-4">Website currently under construction •</span>
-            <span className="mx-4">Website currently under construction •</span>
+            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4">• Website currently under construction </span>
           </div>
 
           <div className="marquee-content absolute top-0 py-0 animate-marquee2 whitespace-nowrap flex">
-            <span className="mx-4">Website currently under construction •</span>
-            <span className="mx-4">Website currently under construction •</span>
-            <span className="mx-4">Website currently under construction •</span>
-            <span className="mx-4">Website currently under construction •</span>
-            <span className="mx-4">Website currently under construction •</span>
+            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4">• Website currently under construction </span>
+            <span className="mx-4">• Website currently under construction </span>
           </div>
         </div>
       </div>
