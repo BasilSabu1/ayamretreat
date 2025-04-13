@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
                 </div>
               </Link>
             </div>
-            <p className="text-gray-400 text-xs">Ayam Reateat</p>
+            <p className="text-gray-400 text-xs">Ayam Retreat</p>
           </div>
 
           {/* Product Column */}
