@@ -13,13 +13,16 @@ const Footer: React.FC = () => {
             <div className="mb-4">
               <Link href="/">
                 <div className="w-48 relative">
-                  <Image
-                    src="/headerlogo.png"
-                    alt="AyAm Retreat"
-                    width={190}
-                    height={60}
-                    className="object-contain"
-                  />
+                  <div className="text-blue-500 font-bold">
+                    <Image
+                      src="/headerlogo.png"
+                      alt="AyAm Retreat Logo"
+                      width={48}
+                      height={48}
+                      className="h-12 w-auto"
+                      unoptimized
+                    />
+                  </div>
                 </div>
               </Link>
             </div>
@@ -44,7 +47,7 @@ const Footer: React.FC = () => {
                 </div>
               </Link>
             </div>
-            <p className="text-gray-400 text-xs">©2020companyname</p>
+            <p className="text-gray-400 text-xs">Ayam Reateat</p>
           </div>
 
           {/* Product Column */}
