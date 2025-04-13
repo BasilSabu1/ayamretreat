@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
               </Link>
             </div>
             <p className="text-gray-600 text-sm mb-4 text-center md:text-left">
-              is a private virtual network that has unique features and has high
-              security.
+            Discover exclusive resort experiences with our subscription plans - your getaway, anytime you need it.
+
             </p>
             <div className="flex space-x-4 mb-4">
               <Link href="#" aria-label="Facebook">
