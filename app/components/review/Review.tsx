@@ -16,30 +16,30 @@ const Testimonials = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      name: "Viezh Robert",
-      location: "Warsaw, Poland",
+      name: "Abhishek Sharma",
+      location: "Kengeri, Banglore",
       comment:
         "Peaceful escape in Idukki! Drifters Valley offers cozy stays, great food, and stunning views—perfect for a relaxing getaway in nature.",
       rating: 4.2,
-      avatar: "/review/review1.png",
+      avatar: "/review/indian1.webp",
     },
     {
       id: 2,
-      name: "Yessica Christy",
-      location: "Shanxi, China",
+      name: "Rohit Patel ",
+      location: "Mumbai, Maharastra",
       comment:
         'Ayam Retreat helped us choose the perfect resort that matched our preferences for quality and a vibrant atmosphere. Truly appreciate their exceptional service!',
       rating: 4.7,
-      avatar: "/review/review2.png",
+      avatar: "/review/indian2.jpg",
     },
     {
       id: 3,
-      name: "Kim Young Jou",
-      location: "Seoul, South Korea",
+      name: "Alen Thomas",
+      location: "Ernakulam, Kerala",
       comment:
         'Ayam Retreat offers a great opportunity to earn by referring candidates. I regularly recommend @aayam.retreat to my network and have had a positive experience.',
       rating: 4.5,
-      avatar: "/review/review3.png",
+      avatar: "/review/indian3.avif",
     },
     // More testimonials can be added here
     // {
