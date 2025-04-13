@@ -7,19 +7,19 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-50 py-12 px-4 md:px-8 lg:px-16">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 text-center">
             <div className="mb-4">
               <Link href="/">
-                <div className="w-48 relative">
+                <div className="w-48 relative mx-auto ">
                   <div className="text-blue-500 font-bold">
                     <Image
                       src="/headerlogo.png"
                       alt="AyAm Retreat Logo"
                       width={48}
                       height={48}
-                      className="h-12 w-auto"
+                      className="h-12 w-auto mx-auto"
                       unoptimized
                     />
                   </div>
@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
               is a private virtual network that has unique features and has high
               security.
             </p>
-            <div className="flex space-x-4 mb-4">
+            <div className="flex justify-center space-x-4 mb-4">
               <Link href="#" aria-label="Facebook">
                 <div className="text-blue-500">
                   <FaFacebookF size={16} />
@@ -47,51 +47,45 @@ const Footer: React.FC = () => {
                 </div>
               </Link>
             </div>
-            <p className="text-gray-400 text-xs">Ayam Retreat</p>
+            <p className="text-gray-400 text-xs">
+              © 2025 Ayam Retreat. All rights reserved.
+            </p>
           </div>
 
           {/* Product Column */}
-          <div className="md:col-span-1">
-            <h3 className="font-medium mb-4">Product</h3>
+          <div className="md:col-span-1 text-center">
+            <h3 className="font-medium mb-4">Engage</h3>
             <ul className="space-y-2">
-              <li>
+              {/* <li>
                 <Link
-                  href="/download"
+                  href="/About "
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Download
+                  About 
+                </Link>
+              </li> */}
+              <li>
+                <Link
+                  href="/Retreats"
+                  className="text-gray-600 hover:text-blue-500 text-sm"
+                >
+                  Retreats
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/pricing"
+                  href="/Experiences"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Pricing
+                  Experiences
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/locations"
+                  href="/gallery"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Locations
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/server"
-                  className="text-gray-600 hover:text-blue-500 text-sm"
-                >
-                  Server
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/countries"
-                  className="text-gray-600 hover:text-blue-500 text-sm"
-                >
-                  Countries
+                  Gallery
                 </Link>
               </li>
               <li>
@@ -102,12 +96,20 @@ const Footer: React.FC = () => {
                   Blog
                 </Link>
               </li>
+              {/* <li>
+                <Link
+                  href="/blog"
+                  className="text-gray-600 hover:text-blue-500 text-sm"
+                >
+                  Blog
+                </Link>
+              </li> */}
             </ul>
           </div>
 
           {/* Engage Column */}
-          <div className="md:col-span-1">
-            <h3 className="font-medium mb-4">Engage</h3>
+          <div className="md:col-span-1 text-center">
+            <h3 className="font-medium mb-4">Quick Links </h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -119,10 +121,10 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/tutorials"
+                  href="/contact"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Tutorials
+                  Contact
                 </Link>
               </li>
               <li>
@@ -143,25 +145,25 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/terms-of-service"
+                  href="/termsandcondition"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Terms of Service
+                  Terms & Conditions
                 </Link>
               </li>
             </ul>
           </div>
 
           {/* Earn Money Column */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-1 text-center">
             <h3 className="font-medium mb-4">Earn Money</h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/affiliate"
+                  href="/Referrals"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Affiliate
+                  Referrals
                 </Link>
               </li>
               <li>
