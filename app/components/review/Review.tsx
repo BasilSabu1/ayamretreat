@@ -19,8 +19,8 @@ const Testimonials = () => {
       name: "Viezh Robert",
       location: "Warsaw, Poland",
       comment:
-        '"Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best".',
-      rating: 4.5,
+        "Peaceful escape in Idukki! Drifters Valley offers cozy stays, great food, and stunning views—perfect for a relaxing getaway in nature.",
+      rating: 4.2,
       avatar: "/review/review1.png",
     },
     {
@@ -28,8 +28,8 @@ const Testimonials = () => {
       name: "Yessica Christy",
       location: "Shanxi, China",
       comment:
-        '"I like it because I like to travel far and still can connect with high speed".',
-      rating: 4.5,
+        'Ayam Retreat helped us choose the perfect resort that matched our preferences for quality and a vibrant atmosphere. Truly appreciate their exceptional service!',
+      rating: 4.7,
       avatar: "/review/review2.png",
     },
     {
@@ -37,20 +37,20 @@ const Testimonials = () => {
       name: "Kim Young Jou",
       location: "Seoul, South Korea",
       comment:
-        '"This is very unusual for my business that currently requires a virtual private network that has high security".',
+        'Ayam Retreat offers a great opportunity to earn by referring candidates. I regularly recommend @aayam.retreat to my network and have had a positive experience.',
       rating: 4.5,
       avatar: "/review/review3.png",
     },
     // More testimonials can be added here
-    {
-      id: 4,
-      name: "John Smith",
-      location: "New York, USA",
-      comment:
-        '"The service has been reliable and secure. Exactly what I needed for my work."',
-      rating: 4.5,
-      avatar: "/review/review3.png",
-    },
+    // {
+    //   id: 4,
+    //   name: "John Smith",
+    //   location: "New York, USA",
+    //   comment:
+    //     '"The service has been reliable and secure. Exactly what I needed for my work."',
+    //   rating: 4.5,
+    //   avatar: "/review/review3.png",
+    // },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
