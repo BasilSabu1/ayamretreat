@@ -7,30 +7,31 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-50 py-12 px-4 md:px-8 lg:px-16">
-      <div className="max-w-6xl mx-auto ">
+      <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1 text-center">
+          {/* First column - Logo, description, social links */}
+          <div className="md:col-span-1 flex flex-col items-center md:items-start">
             <div className="mb-4">
               <Link href="/">
-                <div className="w-48 relative mx-auto ">
+                <div className="w-48 relative">
                   <div className="text-blue-500 font-bold">
                     <Image
                       src="/headerlogo.png"
                       alt="AyAm Retreat Logo"
                       width={48}
                       height={48}
-                      className="h-12 w-auto mx-auto"
+                      className="h-12 w-auto mx-auto" // <-- Center image itself
                       unoptimized
                     />
                   </div>
                 </div>
               </Link>
             </div>
-            <p className="text-gray-600 text-sm mb-4">
+            <p className="text-gray-600 text-sm mb-4 text-center md:text-left">
               is a private virtual network that has unique features and has high
               security.
             </p>
-            <div className="flex justify-center space-x-4 mb-4">
+            <div className="flex space-x-4 mb-4">
               <Link href="#" aria-label="Facebook">
                 <div className="text-blue-500">
                   <FaFacebookF size={16} />
@@ -47,29 +48,19 @@ const Footer: React.FC = () => {
                 </div>
               </Link>
             </div>
-            <p className="text-gray-400 text-xs">
-              © 2025 Ayam Retreat. All rights reserved.
-            </p>
+            <p className="text-gray-400 text-xs text-center md:text-left">© 2025 Ayam Retreat. All rights reserved.</p>
           </div>
 
           {/* Product Column */}
-          <div className="md:col-span-1 text-center">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start">
             <h3 className="font-medium mb-4">Engage</h3>
-            <ul className="space-y-2">
-              {/* <li>
-                <Link
-                  href="/About "
-                  className="text-gray-600 hover:text-blue-500 text-sm"
-                >
-                  About 
-                </Link>
-              </li> */}
+            <ul className="space-y-2 text-center md:text-left">
               <li>
                 <Link
                   href="/Retreats"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Retreats
+                  Retreats 
                 </Link>
               </li>
               <li>
@@ -77,7 +68,7 @@ const Footer: React.FC = () => {
                   href="/Experiences"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Experiences
+                  Experiences 
                 </Link>
               </li>
               <li>
@@ -85,7 +76,7 @@ const Footer: React.FC = () => {
                   href="/gallery"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Gallery
+                  Gallery 
                 </Link>
               </li>
               <li>
@@ -93,24 +84,16 @@ const Footer: React.FC = () => {
                   href="/blog"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Blog
+                  Blog 
                 </Link>
               </li>
-              {/* <li>
-                <Link
-                  href="/blog"
-                  className="text-gray-600 hover:text-blue-500 text-sm"
-                >
-                  Blog
-                </Link>
-              </li> */}
             </ul>
           </div>
 
           {/* Engage Column */}
-          <div className="md:col-span-1 text-center">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start">
             <h3 className="font-medium mb-4">Quick Links </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-center md:text-left">
               <li>
                 <Link
                   href="/faq"
@@ -155,9 +138,9 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Earn Money Column */}
-          <div className="md:col-span-1 text-center">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start">
             <h3 className="font-medium mb-4">Earn Money</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-center md:text-left">
               <li>
                 <Link
                   href="/Referrals"
