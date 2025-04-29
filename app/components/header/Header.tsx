@@ -29,13 +29,13 @@ export default function Header() {
         <nav className="hidden md:flex items-center ml-auto mr-20">
           <div className="flex space-x-12">
             <a
-              href="#about"
+              href="/aboutus"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
               About us
             </a>
             <a
-              href="#testimonials"
+              href="/testimonials"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
               Testimonials
