@@ -35,6 +35,12 @@ export default function Header() {
               About us
             </a>
             <a
+              href="/resorts"
+              className="text-gray-800 hover:text-blue-500 text-lg"
+            >
+              Resorts
+            </a>
+            <a
               href="/testimonials"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
