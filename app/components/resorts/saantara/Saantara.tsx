@@ -2,36 +2,33 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function SaantaraRetreat() {
+export default function KailasamRetreat() {
   const [showMore, setShowMore] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
 
   const galleryImages = [
-    "/resorts/saantara/gallery/gallery1.png",
-    "/resorts/saantara/gallery/gallery2.png",
-    "/resorts/saantara/gallery/gallery3.png",
+    "/resorts/kailasam/gallery/gallery1.png",
+    "/resorts/kailasam/gallery/gallery2.png",
+    "/resorts/kailasam/gallery/gallery3.png",
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handlePrev = () => {
+  const handleNext = () => {
     setActiveSlide((current) => {
-      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
+      const newIndex = (current + 1) % galleryImages.length;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
   };
 
-  const handleNext = () => {
+  useEffect(() => {
+    const interval = setInterval(handleNext, 1000);
+    return () => clearInterval(interval);
+  }, [handleNext]);
+
+  const handlePrev = () => {
     setActiveSlide((current) => {
-      const newIndex = (current + 1) % galleryImages.length;
+      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
@@ -54,8 +51,8 @@ export default function SaantaraRetreat() {
         <div className="flex items-center mb-4">
           <div className="mr-4">
             <Image
-              src="/resorts/saantara/logo.png"
-              alt="Saantara Logo"
+              src="/resorts/kailasam/logo.png"
+              alt="Kailasam Logo"
               width={150}
               height={50}
               className="h-12 w-auto"
@@ -70,7 +67,7 @@ export default function SaantaraRetreat() {
           {/* Left Text Section */}
           <div className="md:w-1/2 space-y-4">
             <h1 className="text-3xl font-bold text-gray-800">
-              Saantara Retreat
+              Kailasam Retreat
             </h1>
             <div className="flex items-center space-x-2 text-sm">
               <span className="flex items-center">
@@ -94,68 +91,67 @@ export default function SaantaraRetreat() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                Palakkad
+                Munnar
               </span>{" "}
               <span className="text-gray-400">•</span>
               <span className="bg-blue-400 text-black px-2 py-0.5 rounded-full">
-                Wellness & Luxury Stay
+                Mountain & Tea Estate Stay
               </span>
             </div>
             <p className="text-sm md:text-base">
-              Located in the heart of a traditional Kerala village, Saantara
-              invites you to step into the timeless wisdom of Ayurveda and
-              ancestral living. Housed in an elegant mana—a heritage home—this
-              retreat is a serene blend of tradition and luxury. At Saantara,
-              wellness is not a trend; it's a way of life. Every detail honors
-              balance, tradition, and slow, intentional living. This is your
-              invitation to return home.
+              Nestled in the lush tea gardens of Munnar, Kailasam Retreat offers
+              a serene escape amidst the Western Ghats. This boutique property
+              blends colonial charm with modern comforts, providing breathtaking
+              views of rolling hills and misty valleys. At Kailasam, experience
+              the tranquility of nature while enjoying personalized hospitality
+              that makes you feel at home in the mountains.
             </p>
 
             {/* Feature Icons */}
             <div className="grid grid-cols-3 gap-4 pt-4">
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="rounded-full p-2 mb-2">
                   <Image
-                    src="/resorts/saantara/featuredicons/icon1.png"
-                    alt="Ayurvedic"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    src="/resorts/kailasam/featuredicons/icon1.png"
+                    alt="Tea Estate"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 md:h-10 md:w-10"
                     quality={100}
                   />
                 </div>
                 <p className="text-xs md:text-sm">
-                  Authentic Ayurvedic therapies in a heritage Kerala setting
+                  Private tea estate with panoramic mountain views
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="rounded-full p-2 mb-2">
                   <Image
-                    src="/resorts/saantara/featuredicons/icon2.png"
-                    alt="Tranquil"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    src="/resorts/kailasam/featuredicons/icon2.png"
+                    alt="Heritage"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 md:h-10 md:w-10"
                     quality={100}
                   />
                 </div>
                 <p className="text-xs md:text-sm">
-                  Tranquil setting surrounded by coconut groves
+                  Heritage bungalow with colonial-era architecture
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="rounded-full p-2 mb-2">
                   <Image
-                    src="/resorts/saantara/featuredicons/icon3.png"
-                    alt="Healing"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    src="/resorts/kailasam/featuredicons/icon3.png"
+                    alt="Nature"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 md:h-10 md:w-10"
                     quality={100}
                   />
                 </div>
                 <p className="text-xs md:text-sm">
-                  Complete immersion with healing as a way of life
+                  Nature walks and tea plantation tours
                 </p>
               </div>
             </div>
@@ -166,8 +162,8 @@ export default function SaantaraRetreat() {
             {/* Main Banner Image */}
             <div className="relative">
               <Image
-                src="/resorts/saantara/bannersection.png"
-                alt="Saantara Retreat Main View"
+                src="/resorts/kailasam/bannersection.png"
+                alt="Kailasam Retreat Main View"
                 width={600}
                 height={400}
                 className="w-full h-64 md:h-80 object-cover rounded-lg"
@@ -203,7 +199,7 @@ export default function SaantaraRetreat() {
                   >
                     <Image
                       src={image}
-                      alt={`Saantara Gallery Image ${index + 1}`}
+                      alt={`Kailasam Gallery Image ${index + 1}`}
                       width={120}
                       height={80}
                       className="h-16 w-24 object-cover rounded-md"
@@ -232,24 +228,30 @@ export default function SaantaraRetreat() {
       <div className="relative mb-8">
         <div className="text-center py-8 px-4 md:px-8 bg-green-50">
           <h2 className="text-3xl font-serif text-green-800 mb-4">
-            Welcome to Saantara
+            Welcome to Kailasam
           </h2>
           <p className="max-w-3xl mx-auto text-sm md:text-base">
-            Step across the threshold of time. With every scent of herbal oil,
-            every chant carried on the breeze, and every bite of healing food,
-            you're wrapped in centuries of care. Here, you don't just experience
-            tradition—you breathe it in.
+            Perched among the clouds, Kailasam offers a sanctuary where time
+            slows to the rhythm of nature. Wake up to misty mornings, spend your
+            days exploring endless tea gardens, and retire to the warmth of a
+            heritage bungalow. This is where mountain dreams come alive, with
+            every detail crafted for your comfort and delight.
           </p>
         </div>
 
-        {/* Large Image with Pool - Full width */}
-        <div className="w-full mt-4">
-          <div className="relative w-full h-64 md:h-96 lg:h-[500px] overflow-hidden">
+        {/* Large Image with Pool - Full width with aspect ratio */}
+        <div className="w-full mt-4 aspect-w-16 aspect-h-9">
+          <div
+            className="relative w-full h-auto overflow-hidden"
+            style={{ paddingBottom: "56.25%" }}
+          >
+            {" "}
+            {/* 16:9 aspect ratio */}
             <Image
-              src="/resorts/saantara/welcomesection.png"
-              alt="Saantara Villa with Pool"
+              src="/resorts/kailasam/welcome.png"
+              alt="Kailasam Villa with Tea Garden View"
               fill
-              className="object-cover w-full h-full"
+              className="object-contain w-full h-full"
               quality={100}
             />
           </div>
@@ -267,33 +269,32 @@ export default function SaantaraRetreat() {
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Personalized Ayurvedic consultations and treatment plans
+                    Private tea estate tours and tasting sessions
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Daily massages, herbal therapies, and steam baths
+                    Guided nature walks through cardamom hills and spice gardens
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Stay in a beautifully restored traditional mana with open
-                    courtyards and wooden pillars
+                    Stay in beautifully restored colonial-era rooms with modern
+                    amenities
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Village walks and lessons in Kerala's healing heritage
+                    Bonfire evenings with local storytelling and music
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Plant-based, Ayurvedic meals prepared using age-old recipes
-                    and local ingredients
+                    Authentic Kerala cuisine with fresh, local ingredients
                   </span>
                 </li>
               </ul>
@@ -308,37 +309,37 @@ export default function SaantaraRetreat() {
                     {
                       alt: "Parking",
                       label: "Secured parking",
-                      img: "/resorts/saantara/propertiesamenties/parking.png",
+                      img: "/resorts/kailasam/propertiesamenties/parking.png",
                     },
                     {
                       alt: "Books",
-                      label: "Books, DVDs, music for children",
-                      img: "/resorts/saantara/propertiesamenties/books.png",
+                      label: "Library with curated collection",
+                      img: "/resorts/kailasam/propertiesamenties/books.png",
                     },
                     {
                       alt: "Yoga",
-                      label: "Yoga classes",
-                      img: "/resorts/saantara/propertiesamenties/yoga.png",
+                      label: "Yoga deck with mountain views",
+                      img: "/resorts/kailasam/propertiesamenties/yoga.png",
                     },
                     {
                       alt: "Free WiFi",
                       label: "Free WiFi",
-                      img: "/resorts/saantara/propertiesamenties/freewifi.png",
+                      img: "/resorts/kailasam/propertiesamenties/freewifi.png",
                     },
                     {
                       alt: "Bicycle",
-                      label: "Bicycle rental",
-                      img: "/resorts/saantara/propertiesamenties/bicycle.png",
+                      label: "Nature trail access",
+                      img: "/resorts/kailasam/propertiesamenties/bicycle.png",
                     },
                     {
-                      alt: "Bicycle",
-                      label: "Bicycle Available",
-                      img: "/resorts/saantara/propertiesamenties/bicycleavailable.png",
+                      alt: "View",
+                      label: "Panoramic viewing deck",
+                      img: "/resorts/kailasam/propertiesamenties/bicycleavailable.png",
                     },
                     {
-                      alt: "Play area",
-                      label: "Indoor play area for children",
-                      img: "/resorts/saantara/propertiesamenties/playarea.png",
+                      alt: "Dining",
+                      label: "Al fresco dining area",
+                      img: "/resorts/kailasam/propertiesamenties/playarea.png",
                     },
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center">
@@ -363,42 +364,42 @@ export default function SaantaraRetreat() {
                     {
                       alt: "AC",
                       label: "Air conditioning",
-                      img: "/resorts/saantara/roomfeatures/airconditioning.png",
+                      img: "/resorts/kailasam/roomfeatures/airconditioning.png",
                     },
                     {
                       alt: "Housekeeping",
-                      label: "House keeping",
-                      img: "/resorts/saantara/roomfeatures/housekeeping.png",
+                      label: "Daily housekeeping",
+                      img: "/resorts/kailasam/roomfeatures/housekeeping.png",
                     },
                     {
                       alt: "Balcony",
                       label: "Private balcony",
-                      img: "/resorts/saantara/roomfeatures/balcony.png",
+                      img: "/resorts/kailasam/roomfeatures/balcony.png",
                     },
                     {
                       alt: "Room service",
-                      label: "Room service",
-                      img: "/resorts/saantara/roomfeatures/roomservice.png",
+                      label: "24-hour room service",
+                      img: "/resorts/kailasam/roomfeatures/roomservice.png",
                     },
                     {
-                      alt: "Kitchenette",
-                      label: "Kitchenette",
-                      img: "/resorts/saantara/roomfeatures/kitchen.png",
+                      alt: "Tea",
+                      label: "Tea-making facilities",
+                      img: "/resorts/kailasam/roomfeatures/kitchen.png",
                     },
                     {
-                      alt: "Radio",
-                      label: "Radio",
-                      img: "/resorts/saantara/roomfeatures/radio.png",
+                      alt: "Fireplace",
+                      label: "Wooden fireplace",
+                      img: "/resorts/kailasam/roomfeatures/radio.png",
                     },
                     {
-                      alt: "Extra long beds",
-                      label: "Extra long beds",
-                      img: "/resorts/saantara/roomfeatures/longbed.png",
+                      alt: "Beds",
+                      label: "Four-poster beds",
+                      img: "/resorts/kailasam/roomfeatures/longbed.png",
                     },
                     {
-                      alt: "Bath/Shower",
-                      label: "Bath/Shower",
-                      img: "/resorts/saantara/roomfeatures/bath.png",
+                      alt: "Bath",
+                      label: "Rain shower",
+                      img: "/resorts/kailasam/roomfeatures/bath.png",
                     },
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center">
@@ -436,22 +437,28 @@ export default function SaantaraRetreat() {
             Why Choose This Retreat
           </h2>
           <p className="text-center mb-8 max-w-3xl mx-auto text-sm md:text-base">
-            Saantara is a return to our roots. In a world that constantly pulls
-            us forward, this retreat draws you inward— toward balance,
-            tradition, and holistic wellness. If you're seeking healing that
-            honors the body, mind, and spirit through generations of wisdom,
-            Saantara is where your journey begins, gently and deeply.
+            Kailasam offers a unique blend of heritage charm and natural beauty,
+            where every window frames a postcard-perfect view. Unlike commercial
+            resorts, we provide an intimate experience with personalized
+            attention, allowing you to truly connect with Munnar&apos;s magical
+            landscape. For those seeking authenticity, tranquility, and a deep
+            immersion in tea country, Kailasam is your perfect mountain home.
           </p>
         </div>
 
-        {/* Full width image - fixed to be truly full width */}
+        {/* Full width image with aspect ratio */}
         <div className="w-full">
-          <div className="relative w-full h-64 md:h-96 lg:h-[500px] overflow-hidden">
+          <div
+            className="relative w-full overflow-hidden"
+            style={{ paddingBottom: "56.25%" }}
+          >
+            {" "}
+            {/* 16:9 aspect ratio */}
             <Image
-              src="/resorts/saantara/whychoose.png"
-              alt="Ayurvedic herbs and treatments"
+              src="/resorts/kailasam/whychoose.png"
+              alt="Tea gardens and mountain views"
               fill
-              className="object-cover w-full h-full"
+              className="object-contain w-full h-full"
               quality={100}
               priority
             />

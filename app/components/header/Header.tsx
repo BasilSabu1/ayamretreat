@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Menu } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -28,36 +29,36 @@ export default function Header() {
         {/* Navigation - desktop - positioned more to the right */}
         <nav className="hidden md:flex items-center ml-auto mr-20">
           <div className="flex space-x-12">
-            <a
+            <Link
               href="/aboutus"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
               About us
-            </a>
-            <a
+            </Link>
+            <Link
               href="/resorts"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
               Resorts
-            </a>
-            <a
+            </Link>
+            <Link
               href="/testimonials"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
               Testimonials
-            </a>
-            <a
+            </Link>
+            <Link
               href="#blog"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
               Blog
-            </a>
+            </Link>
           </div>
         </nav>
 
         {/* Account button */}
         <div className="flex items-center space-x-4 text-lg">
-          <a
+          <Link
             href="#account"
             className="hidden md:flex items-center text-gray-800 hover:text-blue-500"
           >
@@ -73,7 +74,7 @@ export default function Header() {
               <path d="M3 21v-2a9 9 0 0 1 18 0v2" strokeWidth="2" />
             </svg>
             Account
-          </a>
+          </Link>
 
           {/* Mobile menu button */}
           <button
@@ -130,19 +131,19 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg absolute top-16 right-0 left-0 z-10">
           <nav className="flex flex-col px-4 py-2">
-            <a href="#about" className="py-2 text-gray-800 hover:text-blue-500">
+            <Link href="#about" className="py-2 text-gray-800 hover:text-blue-500">
               About us
-            </a>
-            <a
+            </Link>
+            <Link
               href="#testimonials"
               className="py-2 text-gray-800 hover:text-blue-500"
             >
               Testimonials
-            </a>
-            <a href="#blog" className="py-2 text-gray-800 hover:text-blue-500">
+            </Link>
+            <Link href="#blog" className="py-2 text-gray-800 hover:text-blue-500">
               Blog
-            </a>
-            <a
+            </Link>
+            <Link
               href="#account"
               className="py-2 text-gray-800 hover:text-blue-500 flex items-center"
             >
@@ -158,7 +159,7 @@ export default function Header() {
                 <path d="M3 21v-2a9 9 0 0 1 18 0v2" strokeWidth="2" />
               </svg>
               Account
-            </a>
+            </Link>
           </nav>
         </div>
       )}

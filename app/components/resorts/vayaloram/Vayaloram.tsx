@@ -13,25 +13,21 @@ export default function VayaloramRetreat() {
     "/resorts/vayaloram/gallery/gallery3.png",
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handlePrev = () => {
+  const handleNext = () => {
     setActiveSlide((current) => {
-      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
+      const newIndex = (current + 1) % galleryImages.length;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
   };
 
-  const handleNext = () => {
+  useEffect(() => {
+    const interval = setInterval(handleNext, 1000);
+    return () => clearInterval(interval);
+  }, [handleNext]);
+  const handlePrev = () => {
     setActiveSlide((current) => {
-      const newIndex = (current + 1) % galleryImages.length;
+      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
@@ -100,13 +96,13 @@ export default function VayaloramRetreat() {
               </span>
             </div>
             <p className="text-sm md:text-base">
-              Vayaloram Retreat is where Kerala's backwaters whisper stories and
-              the paddy fields stretch as far as the eye can see. From floating
-              cottages gently rocking on the water to golden sunrises that melt
-              into dreamy sunsets, this retreat brings together stillness and
-              soulful exploration. Glide through hidden lagoons by boat, visit
-              quiet villages, and slow down just enough to take it all
-              in—unfiltered, unhurried, unforgettable.
+              Vayaloram Retreat is where Kerala&apos;s backwaters whisper
+              stories and the paddy fields stretch as far as the eye can see.
+              From floating cottages gently rocking on the water to golden
+              sunrises that melt into dreamy sunsets, this retreat brings
+              together stillness and soulful exploration. Glide through hidden
+              lagoons by boat, visit quiet villages, and slow down just enough
+              to take it all in—unfiltered, unhurried, unforgettable.
             </p>
 
             {/* Feature Icons */}
@@ -230,13 +226,13 @@ export default function VayaloramRetreat() {
       <div className="relative mb-8">
         <div className="text-center py-8 px-4 md:px-8 bg-green-50">
           <h2 className="text-3xl font-serif text-green-800 mb-4">
-            Welcome to the Water's Edge{" "}
+            Welcome to the Water&apos;s Edge{" "}
           </h2>
           <p className="max-w-3xl mx-auto text-sm md:text-base">
             Life flows differently at Vayaloram. Boats replace roads, birdsong
             starts the day, and every turn through the backwaters feels like a
-            postcard come to life. Step aboard, drift slowly, and let Kerala's
-            heart unfold around you.
+            postcard come to life. Step aboard, drift slowly, and let
+            Kerala&apos;s heart unfold around you.
           </p>
         </div>
 
@@ -284,7 +280,7 @@ export default function VayaloramRetreat() {
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Village walks and lessons in Kerala's healing heritage
+                    Village walks and lessons in Kerala&apos;s healing heritage
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -437,8 +433,9 @@ export default function VayaloramRetreat() {
             Vayaloram is for the wanderer who craves beauty in the little
             things—the shimmer of light on water, the warmth of village
             hospitality, the sound of oars slicing through still backwaters.
-            It's not just a stay—it's a gentle journey into Kerala's soul, where
-            you float, explore, and return feeling lighter than you arrived.
+            It&apos;s not just a stay—it&apos;s a gentle journey into
+            Kerala&apos;s soul, where you float, explore, and return feeling
+            lighter than you arrived.
           </p>
         </div>
 

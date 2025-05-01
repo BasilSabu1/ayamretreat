@@ -33,7 +33,7 @@ export default function ResortPage() {
          (
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Resort not found</h1>
-            <p>The resort "{slug}" could not be found.</p>
+            <p>The resort &quot;{slug}&quot; could not be found.</p>
           </div>
         )}
     </div>

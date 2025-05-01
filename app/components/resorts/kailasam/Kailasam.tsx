@@ -13,25 +13,22 @@ export default function KailasamRetreat() {
     "/resorts/kailasam/gallery/gallery3.png",
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handlePrev = () => {
+  const handleNext = () => {
     setActiveSlide((current) => {
-      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
+      const newIndex = (current + 1) % galleryImages.length;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
   };
 
-  const handleNext = () => {
+  useEffect(() => {
+    const interval = setInterval(handleNext, 1000);
+    return () => clearInterval(interval);
+  }, [handleNext]);
+
+  const handlePrev = () => {
     setActiveSlide((current) => {
-      const newIndex = (current + 1) % galleryImages.length;
+      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
@@ -105,55 +102,55 @@ export default function KailasamRetreat() {
               by sweeping views and silent skies, it offers space to realign
               with nature—and yourself. With a strong focus on sustainable
               living, mindful movement, and conscious community, this is more
-              than just a getaway. It's a breath, a pause, a beginning. A place
-              where you are invited to Breathe. Be. Become.
+              than just a getaway. It&apos;s a breath, a pause, a beginning. A
+              place where you are invited to Breathe. Be. Become.
             </p>
 
             {/* Feature Icons */}
             <div className="grid grid-cols-3 gap-4 pt-4">
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="rounded-full p-2 mb-2">
                   <Image
-                    src="/resorts/kailasam/featuredicons/icon3.png"
+                    src="/resorts/saantara/featuredicons/icon1.png"
                     alt="Ayurvedic"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 md:h-10 md:w-10"
                     quality={100}
                   />
                 </div>
                 <p className="text-xs md:text-sm">
-                  Sunrise yoga and guided meditation sessions{" "}
+                  Authentic Ayurvedic therapies in a heritage Kerala setting
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="rounded-full p-2 mb-2">
                   <Image
-                    src="/resorts/kailasam/featuredicons/icon1.png"
+                    src="/resorts/saantara/featuredicons/icon2.png"
                     alt="Tranquil"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 md:h-10 md:w-10"
                     quality={100}
                   />
                 </div>
                 <p className="text-xs md:text-sm">
-                  Earth-friendly practices and sustainable design{" "}
+                  Tranquil setting surrounded by coconut groves
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="rounded-full p-2 mb-2">
                   <Image
-                    src="/resorts/kailasam/featuredicons/icon2.png"
+                    src="/resorts/saantara/featuredicons/icon3.png"
                     alt="Healing"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 md:h-10 md:w-10"
                     quality={100}
                   />
                 </div>
                 <p className="text-xs md:text-sm">
-                  Restorative mountain air and nature-immersed living{" "}
+                  Complete immersion with healing as a way of life
                 </p>
               </div>
             </div>
@@ -243,7 +240,7 @@ export default function KailasamRetreat() {
         <div className="w-full mt-4">
           <div className="relative w-full h-64 md:h-96 lg:h-[500px] overflow-hidden">
             <Image
-              src="/resorts/kailasam/welcomesection.png"
+              src="/resorts/kailasam/welcome.png"
               alt="Kailasam Villa with Pool"
               fill
               className="object-cover w-full h-full"
@@ -431,15 +428,15 @@ export default function KailasamRetreat() {
       <div className="mb-1">
         <div className="px-4 md:px-6">
           <h2 className="text-xl font-semibold text-center mb-4">
-          Why Choose This Retreat
+            Why Choose This Retreat
           </h2>
           <p className="text-center mb-8 max-w-3xl mx-auto text-sm md:text-base">
             Kailasam is a return to living simply and intentionally. In every
             detail—from the way the cottages are built to the food on your
-            plate—there's a deep respect for the land and your journey on it. If
-            you're seeking clarity, purpose, or just the feeling of being in
-            sync with yourself and the earth, Kailasam offers the perfect space
-            to begin that transformation.
+            plate—there&apos;s a deep respect for the land and your journey on
+            it. If you&apos;re seeking clarity, purpose, or just the feeling of
+            being in sync with yourself and the earth, Kailasam offers the
+            perfect space to begin that transformation.
           </p>
         </div>
 

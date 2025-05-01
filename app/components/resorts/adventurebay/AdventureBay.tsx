@@ -12,26 +12,22 @@ export default function AdventureBayRetreat() {
     "/resorts/adventurebay/gallery/gallery2.png",
     "/resorts/adventurebay/gallery/gallery3.png",
   ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handlePrev = () => {
+  const handleNext = () => {
     setActiveSlide((current) => {
-      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
+      const newIndex = (current + 1) % galleryImages.length;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
   };
 
-  const handleNext = () => {
+  useEffect(() => {
+    const interval = setInterval(handleNext, 1000);
+    return () => clearInterval(interval);
+  }, [handleNext]);
+
+  const handlePrev = () => {
     setActiveSlide((current) => {
-      const newIndex = (current + 1) % galleryImages.length;
+      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
@@ -101,12 +97,12 @@ export default function AdventureBayRetreat() {
             </div>
             <p className="text-sm md:text-base">
               Nestled along a stretch of pristine white sands, Adventure Bay is
-              your perfect beachside escape. Whether you're chasing the golden
-              glow of sunrise or unwinding to the colors of sunset, this retreat
-              offers something for everyone. From laid-back beach strolls to
-              lively group games and quiet moments of reflection, Adventure Bay
-              is where memories are made—for families, friends, and solo seekers
-              alike.
+              your perfect beachside escape. Whether you&apos;re chasing the
+              golden glow of sunrise or unwinding to the colors of sunset, this
+              retreat offers something for everyone. From laid-back beach
+              strolls to lively group games and quiet moments of reflection,
+              Adventure Bay is where memories are made—for families, friends,
+              and solo seekers alike.
             </p>
 
             {/* Feature Icons */}
@@ -434,7 +430,7 @@ export default function AdventureBayRetreat() {
             Why Choose This Retreat
           </h2>
           <p className="text-center mb-8 max-w-3xl mx-auto text-sm md:text-base">
-            Adventure Bay is where joy meets the shoreline. It's vibrant,
+            Adventure Bay is where joy meets the shoreline. It&apos;s vibrant,
             playful, and endlessly refreshing—perfect for those who want both
             action and ease. Whether you are reconnecting with old friends,
             making new ones, or just soaking in the sun with salt in your hair,

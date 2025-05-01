@@ -13,25 +13,22 @@ export default function DriftersvalleyRetreat() {
     "/resorts/driftersvalley/gallery/gallery3.png",
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handlePrev = () => {
+  const handleNext = () => {
     setActiveSlide((current) => {
-      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
+      const newIndex = (current + 1) % galleryImages.length;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
   };
 
-  const handleNext = () => {
+  useEffect(() => {
+    const interval = setInterval(handleNext, 1000);
+    return () => clearInterval(interval);
+  }, [handleNext]);
+
+  const handlePrev = () => {
     setActiveSlide((current) => {
-      const newIndex = (current + 1) % galleryImages.length;
+      const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
       scrollToThumbnail(newIndex);
       return newIndex;
     });
@@ -70,7 +67,7 @@ export default function DriftersvalleyRetreat() {
           {/* Left Text Section */}
           <div className="md:w-1/2 space-y-4">
             <h1 className="text-3xl font-bold text-gray-800">
-              Drifter's Valley{" "}
+              Drifter&apos;s Valley{" "}
             </h1>
             <div className="flex items-center space-x-2 text-sm">
               <span className="flex items-center">
@@ -438,10 +435,10 @@ export default function DriftersvalleyRetreat() {
           </h2>
           <p className="text-center mb-8 max-w-3xl mx-auto text-sm md:text-base">
             Drifters Valley is for anyone who feels most alive with a little
-            dust on their shoes and a view that takes their breath away. It's
-            not about disconnecting—it's about reconnecting with nature, good
-            company, and your sense of adventure. Come solo, come with
-            friends—just come ready to explore.
+            dust on their shoes and a view that takes their breath away.
+            It&apos;s not about disconnecting—it&apos;s about reconnecting with
+            nature, good company, and your sense of adventure. Come solo, come
+            with friends—just come ready to explore.
           </p>
         </div>
 
