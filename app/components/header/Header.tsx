@@ -42,16 +42,16 @@ export default function Header() {
               Resorts
             </Link>
             <Link
-              href="/testimonials"
+              href="/retreats"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
-              Testimonials
+              Retreats
             </Link>
             <Link
-              href="#blog"
+              href="/membership"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
-              Blog
+              Membership
             </Link>
           </div>
         </nav>
@@ -131,17 +131,30 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg absolute top-16 right-0 left-0 z-10">
           <nav className="flex flex-col px-4 py-2">
-            <Link href="#about" className="py-2 text-gray-800 hover:text-blue-500">
-              About us
-            </Link>
             <Link
-              href="#testimonials"
+              href="/aboutus"
               className="py-2 text-gray-800 hover:text-blue-500"
             >
-              Testimonials
+              About us
             </Link>
-            <Link href="#blog" className="py-2 text-gray-800 hover:text-blue-500">
-              Blog
+
+            <Link
+              href="/resorts"
+              className="text-gray-800 hover:text-blue-500 text-lg"
+            >
+              Resorts
+            </Link>
+            <Link
+              href="/retreats"
+              className="py-2 text-gray-800 hover:text-blue-500"
+            >
+              Retreats
+            </Link>
+            <Link
+              href="#blog"
+              className="py-2 text-gray-800 hover:text-blue-500"
+            >
+              Membership
             </Link>
             <Link
               href="#account"
