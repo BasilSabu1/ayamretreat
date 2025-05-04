@@ -162,7 +162,7 @@ const RetreatSection: React.FC = () => {
           </div>
         </div>
       </div>
-
+      
       {/* Retreat cards section */}
       <div>
         <h2 className="text-3xl font-bold mb-8 text-center">Our Retreats</h2>

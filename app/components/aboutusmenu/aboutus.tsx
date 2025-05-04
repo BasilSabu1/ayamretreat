@@ -17,6 +17,8 @@ const AboutUs: React.FC = () => {
   return (
     <div className="flex flex-col w-full bg-green-50">
       {/* Hero Section */}
+
+      
       <div className="relative h-80 md:h-96 lg:h-screen lg:max-h-[600px] w-full">
         <Image
           src="/aboutpage.png"
@@ -41,8 +43,10 @@ const AboutUs: React.FC = () => {
         </div>
       </div>
 
+       
+
       <div className="relative w-full">
-        {/* Gallery Images - with taller aspect ratio */}
+        {/* Gallery Images */}
         <div className="grid grid-cols-5 w-full mt-10">
           {images.map((image, index) => (
             <div key={index} className="relative h-96 md:h-112 lg:h-128">

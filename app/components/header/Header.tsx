@@ -15,14 +15,16 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center">
           <div className="text-blue-500 font-bold">
-            <Image
-              src="/headerlogo.png"
-              alt="AyAm Retreat Logo"
-              width={48}
-              height={48}
-              className="h-12 w-auto"
-              unoptimized
-            />
+            <Link href="/">
+              <Image
+                src="/headerlogo.png"
+                alt="AyAm Retreat Logo"
+                width={48}
+                height={48}
+                className="h-12 w-auto cursor-pointer"
+                unoptimized
+              />
+            </Link>
           </div>
         </div>
 
@@ -151,7 +153,7 @@ export default function Header() {
               Retreats
             </Link>
             <Link
-              href="#blog"
+              href="/membership"
               className="py-2 text-gray-800 hover:text-blue-500"
             >
               Membership
