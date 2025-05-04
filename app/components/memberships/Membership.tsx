@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { CheckCircle } from "lucide-react";
+import Image from "next/image";
 
 // Define types for membership plans
 interface BenefitItem {
@@ -42,7 +43,9 @@ const MembershipPlan: FC<PlanProps> = ({
   iconColor,
 }) => {
   return (
-    <div className={`relative rounded-lg overflow-hidden ${cardColor} ${textColor} flex flex-col h-full shadow-xl`}>
+    <div
+      className={`relative rounded-lg overflow-hidden ${cardColor} ${textColor} flex flex-col h-full shadow-xl`}
+    >
       {isPopular && (
         <div className="absolute top-2 right-2 z-10">
           <span className="bg-purple-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-lg">
@@ -76,7 +79,9 @@ const MembershipPlan: FC<PlanProps> = ({
         <p className="text-sm text-gray-300 mb-4">
           Welcome to our exclusive subscription program — your gateway
         </p>
-        <button className={`w-full ${btnColor} hover:${btnHoverColor} ${btnTextColor} font-bold py-2 rounded transition-colors shadow-lg`}>
+        <button
+          className={`w-full ${btnColor} hover:${btnHoverColor} ${btnTextColor} font-bold py-2 rounded transition-colors shadow-lg`}
+        >
           Subscribe
         </button>
       </div>
@@ -89,7 +94,9 @@ const MembershipPlan: FC<PlanProps> = ({
           <ul className="space-y-3">
             {benefits.map((benefit, index) => (
               <li key={index} className="flex items-start gap-2">
-                <CheckCircle className={`h-5 w-5 ${iconColor} flex-shrink-0 mt-0.5`} />
+                <CheckCircle
+                  className={`h-5 w-5 ${iconColor} flex-shrink-0 mt-0.5`}
+                />
                 <span className="text-sm text-gray-300">{benefit.text}</span>
               </li>
             ))}
@@ -98,7 +105,8 @@ const MembershipPlan: FC<PlanProps> = ({
         {referrals && (
           <div className="mt-4">
             <p className="text-xs text-gray-300">
-              Total {referrals} referrals per year. After {referrals} referrals, get 10% of the stay cost back as credit.
+              Total {referrals} referrals per year. After {referrals} referrals,
+              get 10% of the stay cost back as credit.
             </p>
           </div>
         )}
@@ -144,12 +152,12 @@ const MembershipSection: FC = () => {
   return (
     <div className="w-full bg-white">
       {/* Hero Section with Full Background Image */}
-      <div 
+      <div
         className="relative w-full h-96 overflow-hidden"
         style={{
           backgroundImage: `url('/membership/banner.png')`,
           backgroundSize: "cover",
-          backgroundPosition: "center"
+          backgroundPosition: "center",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-blue-500/30 to-green-400/30" />
@@ -168,15 +176,15 @@ const MembershipSection: FC = () => {
           </p>
         </div>
       </div>
-     
+
       {/* Plans Section with Wave Background and Why Subscribe Section */}
-      <div 
+      <div
         className="relative pt-12 pb-24"
         style={{
           backgroundImage: `url('/api/placeholder/800/400')`,
           backgroundSize: "cover",
           backgroundPosition: "center bottom",
-          backgroundAttachment: "fixed"
+          backgroundAttachment: "fixed",
         }}
       >
         {/* Top wave decoration */}
@@ -189,7 +197,7 @@ const MembershipSection: FC = () => {
             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
           </svg>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10 mt-8">
           <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
             Browse Our Plans
@@ -230,40 +238,43 @@ const MembershipSection: FC = () => {
               iconColor="text-yellow-500"
             />
           </div>
-          
+
           {/* Why Subscribe Section */}
           <div className="mt-24 max-w-5xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
             <div className="p-8">
-              <h2 className="text-2xl font-bold mb-6 text-gray-800">Why Subscribe?</h2>
-              
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                Why Subscribe?
+              </h2>
+
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-1">
                   <p className="text-gray-700 mb-4">
-                    Whether you're a frequent traveler, a wellness seeker, 
-                    or someone who loves sharing soulful experiences 
-                    with others — this is your key to a deeper connection 
-                    with our world. Our retreats are accessible only 
-                    through subscription, making this your exclusive 
-                    path in.
+                    Whether you&apos;re a frequent traveler, a wellness seeker,
+                    or someone who loves sharing soulful experiences with others
+                    — this is your key to a deeper connection with our world.
+                    Our retreats are accessible only through subscription,
+                    making this your exclusive path in.
                   </p>
                 </div>
-                
+
                 {/* Vertical divider for desktop */}
                 <div className="hidden md:block w-px h-32 bg-gray-200"></div>
-                
+
                 {/* Image icon */}
                 <div className="relative w-36 h-36 flex-shrink-0 transform rotate-12">
-                  <img 
-                    src="/membership/whysubscribe.png" 
+                  <Image
+                    src="/membership/whysubscribe.png"
                     alt="Why Subscribe"
-                    className="w-full h-full object-contain rounded-full border-4 border-blue-100"
+                    fill
+                    className="object-contain rounded-full border-4 border-blue-100"
+                    sizes="144px"
                   />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Bottom wave decoration */}
         <div className="absolute bottom-0 left-0 right-0 h-24 overflow-hidden">
           <svg
