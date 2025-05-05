@@ -91,7 +91,7 @@ export default function PartnerResorts() {
       : resorts.filter((resort) => resort.state === activeState);
 
   const handleKnowMore = (resortId: string, resortName: string) => {
-    // Create URL-friendly slug
+   
     const slug = resortName.toLowerCase().replace(/\s+/g, "-");
     router.push(`/resorts/${slug}?id=${resortId}`);
   };

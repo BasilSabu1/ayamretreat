@@ -46,25 +46,20 @@ export default function VayaloramRetreat() {
   return (
     <div className="font-sans text-gray-800">
       {/* Header */}
-      <div className="p-4 md:p-6">
-        <div className="flex items-center mb-4">
-          <div className="mr-4">
+      <div className="p-4 md:p-4 ">
+        {/* Main Section with Text and Banner Image */}
+        <div className="flex flex-col md:flex-row gap-6 ">
+          
+          <div className="md:w-1/2 space-y-4 ">
             <Image
               src="/resorts/vayaloram/logo.png"
               alt="Vayaloram Logo"
-              width={150}
-              height={50}
-              className="h-12 w-auto"
+              width={220}
+              height={100}
+              className="h-20 md:h-32 w-auto"
               quality={100}
+              priority
             />
-          </div>
-        </div>
-
-        {/* Main Content Section */}
-        {/* Main Section with Text and Banner Image */}
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* Left Text Section */}
-          <div className="md:w-1/2 space-y-4">
             <h1 className="text-3xl font-bold text-gray-800">Vayaloram</h1>
             <div className="flex items-center space-x-2 text-sm">
               <span className="flex items-center">
@@ -106,49 +101,58 @@ export default function VayaloramRetreat() {
             </p>
 
             {/* Feature Icons */}
-            <div className="grid grid-cols-3 gap-4 pt-4">
+            <div className="grid grid-cols-3 gap-6 pt-6">
+              {" "}
+             
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="bg-gray-100 rounded-full p-4 mb-3">
+                  {" "}
+                 
                   <Image
                     src="/resorts/vayaloram/featuredicons/icon1.png"
                     alt="Ayurvedic"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    width={32} 
+                    height={32} 
+                    className="h-8 w-8" 
                     quality={100}
+                    priority 
                   />
                 </div>
-                <p className="text-xs md:text-sm">
+                <p className="text-sm md:text-base">
+                  {" "}
+                  
                   Authentic Ayurvedic therapies in a heritage Kerala setting
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="bg-gray-100 rounded-full p-4 mb-3">
                   <Image
                     src="/resorts/vayaloram/featuredicons/icon2.png"
                     alt="Tranquil"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8"
                     quality={100}
+                    priority
                   />
                 </div>
-                <p className="text-xs md:text-sm">
+                <p className="text-sm md:text-base">
                   Tranquil setting surrounded by coconut groves
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="bg-gray-100 rounded-full p-4 mb-3">
                   <Image
                     src="/resorts/vayaloram/featuredicons/icon3.png"
                     alt="Healing"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8"
                     quality={100}
+                    priority
                   />
                 </div>
-                <p className="text-xs md:text-sm">
+                <p className="text-sm md:text-base">
                   Complete immersion with healing as a way of life
                 </p>
               </div>

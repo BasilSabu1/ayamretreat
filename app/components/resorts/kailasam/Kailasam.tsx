@@ -48,23 +48,8 @@ export default function KailasamRetreat() {
     <div className="font-sans text-gray-800">
       {/* Header */}
       <div className="p-4 md:p-6">
-        <div className="flex items-center mb-4">
-          <div className="mr-4">
-            <Image
-              src="/resorts/kailasam/logo.png"
-              alt="Kailasam Logo"
-              width={150}
-              height={50}
-              className="h-12 w-auto"
-              quality={100}
-            />
-          </div>
-        </div>
-
-        {/* Main Content Section */}
         {/* Main Section with Text and Banner Image */}
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* Left Text Section */}
+        {/* <div className="flex flex-col md:flex-row gap-6">
           <div className="md:w-1/2 space-y-4">
             <h1 className="text-3xl font-bold text-gray-800">Kailasam </h1>
             <div className="flex items-center space-x-2 text-sm">
@@ -106,7 +91,6 @@ export default function KailasamRetreat() {
               place where you are invited to Breathe. Be. Become.
             </p>
 
-            {/* Feature Icons */}
             <div className="grid grid-cols-3 gap-4 pt-4">
               <div className="flex flex-col items-center text-center">
                 <div className="rounded-full p-2 mb-2">
@@ -156,9 +140,7 @@ export default function KailasamRetreat() {
             </div>
           </div>
 
-          {/* Right Banner Image Section + Gallery Carousel */}
           <div className="md:w-1/2 space-y-2">
-            {/* Main Banner Image */}
             <div className="relative">
               <Image
                 src="/resorts/kailasam/bannersection.png"
@@ -170,9 +152,7 @@ export default function KailasamRetreat() {
               />
             </div>
 
-            {/* Gallery Carousel Section - Below Banner */}
             <div className="relative">
-              {/* Navigation Controls */}
               <div className="absolute inset-y-0 left-0 z-10 flex items-center">
                 <button
                   className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
@@ -183,7 +163,6 @@ export default function KailasamRetreat() {
                 </button>
               </div>
 
-              {/* Thumbnails Carousel */}
               <div
                 ref={carouselRef}
                 className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
@@ -208,7 +187,171 @@ export default function KailasamRetreat() {
                 ))}
               </div>
 
-              {/* Right Navigation */}
+              <div className="absolute inset-y-0 right-0 z-10 flex items-center">
+                <button
+                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+                  onClick={handleNext}
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="h-5 w-5 text-gray-800" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div> */}
+
+        <div className="flex flex-col md:flex-row gap-6">
+          <div className="md:w-1/2 space-y-4">
+            <Image
+              src="/resorts/kailasam/logo.png"
+              alt="Kailasam Logo"
+              width={280}
+              height={120}
+              className="h-20 md:h-40 w-auto md:ml-16"
+              quality={100}
+              priority
+            />
+            <h1 className="text-3xl font-bold text-gray-800 md:ml-44">
+              Kailasam
+            </h1>
+            <div className="flex items-center space-x-2 text-sm md:ml-30">
+              <span className="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 mr-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                Idukki
+              </span>
+              <span className="text-gray-400">•</span>
+              <span className="bg-blue-400 text-black px-2 py-0.5 rounded-full">
+                Wellness & Peaceful Stay
+              </span>
+            </div>
+            <p className="text-sm md:text-base">
+              Perched on a remote mountaintop, Kailasam is a serene wellness
+              retreat inspired by the mythical abode of Lord Shiva. Surrounded
+              by sweeping views and silent skies, it offers space to realign
+              with nature—and yourself. With a strong focus on sustainable
+              living, mindful movement, and conscious community, this is more
+              than just a getaway. It&apos;s a breath, a pause, a beginning. A place
+              where you are invited to Breathe. Be. Become.
+            </p>
+
+            <div className="grid grid-cols-3 gap-6 pt-6">
+              <div className="flex flex-col items-center text-center">
+                <div className="bg-gray-100 rounded-full p-4 mb-3">
+                  <Image
+                    src="/resorts/saantara/featuredicons/icon1.png"
+                    alt="Ayurvedic"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8"
+                    quality={100}
+                    priority
+                  />
+                </div>
+                <p className="text-sm md:text-base">
+                  Authentic Ayurvedic therapies in heritage setting
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="bg-gray-100 rounded-full p-4 mb-3">
+                  <Image
+                    src="/resorts/saantara/featuredicons/icon2.png"
+                    alt="Tranquil"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8"
+                    quality={100}
+                    priority
+                  />
+                </div>
+                <p className="text-sm md:text-base">
+                  Tranquil setting with sweeping mountain views
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="bg-gray-100 rounded-full p-4 mb-3">
+                  <Image
+                    src="/resorts/saantara/featuredicons/icon3.png"
+                    alt="Healing"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8"
+                    quality={100}
+                    priority
+                  />
+                </div>
+                <p className="text-sm md:text-base">
+                  Complete immersion in sustainable living
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="md:w-1/2 space-y-2">
+            <div className="relative">
+              <Image
+                src="/resorts/kailasam/bannersection.png"
+                alt="Kailasam Retreat Main View"
+                width={600}
+                height={400}
+                className="w-full h-64 md:h-80 object-cover rounded-lg"
+                quality={100}
+              />
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 z-10 flex items-center">
+                <button
+                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+                  onClick={handlePrev}
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="h-5 w-5 text-gray-800" />
+                </button>
+              </div>
+
+              <div
+                ref={carouselRef}
+                className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+              >
+                {galleryImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`flex-shrink-0 cursor-pointer transition-opacity duration-300 ${
+                      activeSlide === index ? "opacity-100" : "opacity-70"
+                    }`}
+                  >
+                    <Image
+                      src={image}
+                      alt={`Kailasam Gallery Image ${index + 1}`}
+                      width={120}
+                      height={80}
+                      className="h-16 w-24 object-cover rounded-md"
+                      quality={90}
+                    />
+                  </div>
+                ))}
+              </div>
+
               <div className="absolute inset-y-0 right-0 z-10 flex items-center">
                 <button
                   className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"

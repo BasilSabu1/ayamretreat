@@ -48,26 +48,22 @@ export default function DriftersvalleyRetreat() {
     <div className="font-sans text-gray-800">
       {/* Header */}
       <div className="p-4 md:p-6">
-        <div className="flex items-center mb-4">
-          <div className="mr-4">
+       
+        {/* Main Section with Text and Banner Image */}
+       
+        <div className="flex flex-col md:flex-row gap-6">
+          <div className="md:w-1/2 space-y-4">
             <Image
               src="/resorts/driftersvalley/logo.png"
-              alt="Driftersvalley Logo"
-              width={150}
-              height={50}
-              className="h-12 w-auto"
+              alt="Drifter's Valley Logo"
+              width={220}
+              height={100}
+              className="h-20 md:h-32 w-auto"
               quality={100}
+              priority
             />
-          </div>
-        </div>
-
-        {/* Main Content Section */}
-        {/* Main Section with Text and Banner Image */}
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* Left Text Section */}
-          <div className="md:w-1/2 space-y-4">
             <h1 className="text-3xl font-bold text-gray-800">
-              Drifter&apos;s Valley{" "}
+              Drifter&apos;s Valley
             </h1>
             <div className="flex items-center space-x-2 text-sm">
               <span className="flex items-center">
@@ -91,8 +87,8 @@ export default function DriftersvalleyRetreat() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                Nedumkandam, Idukki{" "}
-              </span>{" "}
+                Nedumkandam, Idukki
+              </span>
               <span className="text-gray-400">•</span>
               <span className="bg-blue-400 text-black px-2 py-0.5 rounded-full">
                 Earth Resort
@@ -103,65 +99,65 @@ export default function DriftersvalleyRetreat() {
               for those who want to breathe fresh air, chase a little adventure,
               and wake up to jaw-dropping views. With fog-kissed mornings,
               scenic trails, and evenings around the fire, this retreat blends
-              comfort with a touch of the wild. Whether you&apos;re trekking
-              through pine-covered paths or riding shotgun on an off-road jeep
-              trail, every moment here reconnects you with the raw beauty of the
+              comfort with a touch of the wild. Whether you&apos;re trekking through
+              pine-covered paths or riding shotgun on an off-road jeep trail,
+              every moment here reconnects you with the raw beauty of the
               outdoors.
             </p>
 
-            {/* Feature Icons */}
-            <div className="grid grid-cols-3 gap-4 pt-4">
+            <div className="grid grid-cols-3 gap-6 pt-6">
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="bg-gray-100 rounded-full p-4 mb-3">
                   <Image
                     src="/resorts/driftersvalley/featuredicons/icon3.png"
-                    alt="Ayurvedic"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    alt="Slow Mornings"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8"
                     quality={100}
+                    priority
                   />
                 </div>
-                <p className="text-xs md:text-sm">
-                  Slow mornings with warm tea and valley views{" "}
+                <p className="text-sm md:text-base">
+                  Slow mornings with warm tea and valley views
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="bg-gray-100 rounded-full p-4 mb-3">
                   <Image
                     src="/resorts/driftersvalley/featuredicons/icon1.png"
-                    alt="Tranquil"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    alt="Serene Setting"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8"
                     quality={100}
+                    priority
                   />
                 </div>
-                <p className="text-xs md:text-sm">
-                  Serene mountaintop setting{" "}
+                <p className="text-sm md:text-base">
+                  Serene mountaintop setting
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gray-100 rounded-full p-3 mb-2">
+                <div className="bg-gray-100 rounded-full p-4 mb-3">
                   <Image
                     src="/resorts/driftersvalley/featuredicons/icon2.png"
-                    alt="Healing"
-                    width={24}
-                    height={24}
-                    className="h-6 w-6"
+                    alt="Cozy Stays"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8"
                     quality={100}
+                    priority
                   />
                 </div>
-                <p className="text-xs md:text-sm">
-                  Cozy tented stays with modern comforts{" "}
+                <p className="text-sm md:text-base">
+                  Cozy tented stays with modern comforts
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right Banner Image Section + Gallery Carousel */}
           <div className="md:w-1/2 space-y-2">
-            {/* Main Banner Image */}
             <div className="relative">
               <Image
                 src="/resorts/driftersvalley/bannersection.png"
@@ -173,9 +169,7 @@ export default function DriftersvalleyRetreat() {
               />
             </div>
 
-            {/* Gallery Carousel Section - Below Banner */}
             <div className="relative">
-              {/* Navigation Controls */}
               <div className="absolute inset-y-0 left-0 z-10 flex items-center">
                 <button
                   className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
@@ -186,7 +180,6 @@ export default function DriftersvalleyRetreat() {
                 </button>
               </div>
 
-              {/* Thumbnails Carousel */}
               <div
                 ref={carouselRef}
                 className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
@@ -211,7 +204,6 @@ export default function DriftersvalleyRetreat() {
                 ))}
               </div>
 
-              {/* Right Navigation */}
               <div className="absolute inset-y-0 right-0 z-10 flex items-center">
                 <button
                   className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"

@@ -1,17 +1,29 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface RetreatCardProps {
+  id: number;
   imageSrc: string;
   title: string;
   location: string;
 }
 
 const RetreatCard: React.FC<RetreatCardProps> = ({
+  id,
   imageSrc,
   title,
   location,
 }) => {
+  const router = useRouter();
+
+  const handleKnowMore = (retreatId: number, retreatName: string) => {
+    const slug = retreatName.toLowerCase().replace(/\s+/g, "-");
+    router.push(`/resorts/${slug}?id=${retreatId}`);
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden h-full">
       <div className="relative h-48 md:h-40 lg:h-48">
@@ -28,7 +40,10 @@ const RetreatCard: React.FC<RetreatCardProps> = ({
         <p className="text-gray-600 text-sm">{location}</p>
       </div>
       <div className="px-3 pb-3">
-        <button className="bg-black text-white text-xs px-3 py-1 rounded hover:bg-gray-800 transition-colors">
+        <button
+          onClick={() => handleKnowMore(id, title)}
+          className="bg-black text-white text-xs px-3 py-1 rounded hover:bg-gray-800 transition-colors"
+        >
           Know more
         </button>
       </div>
@@ -40,7 +55,7 @@ const RetreatCard: React.FC<RetreatCardProps> = ({
 const retreats = [
   {
     id: 1,
-    title: "Drifter's Valley",
+    title: "Drifters Valley",
     location: "Wayanad/Western Ghats",
     imageSrc: "/resorts/adventurebay.png",
   },
@@ -58,13 +73,13 @@ const retreats = [
   },
   {
     id: 4,
-    title: "Kailasom",
+    title: "Kailasam",
     location: "Idukki",
     imageSrc: "/resorts/kailasam.png",
   },
   {
     id: 5,
-    title: "Saantara Retreat",
+    title: "Saantara",
     location: "Kozhikode",
     imageSrc: "/resorts/saantara.png",
   },
@@ -92,9 +107,7 @@ const RetreatSection: React.FC = () => {
                     sizes="160px"
                   />
                 </div>
-                <div className="">
-                    
-                </div>
+                <div className=""></div>
                 <div className="ml-2">
                   <p className="text-4xl font-bold text-blue-500">unique</p>
                   <p className="text-4xl font-bold text-black">stays</p>
@@ -162,7 +175,7 @@ const RetreatSection: React.FC = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Retreat cards section */}
       <div>
         <h2 className="text-3xl font-bold mb-8 text-center">Our Retreats</h2>
@@ -170,6 +183,7 @@ const RetreatSection: React.FC = () => {
           {retreats.map((retreat) => (
             <RetreatCard
               key={retreat.id}
+              id={retreat.id}
               imageSrc={retreat.imageSrc}
               title={retreat.title}
               location={retreat.location}

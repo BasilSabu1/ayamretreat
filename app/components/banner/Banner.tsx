@@ -2,6 +2,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 // import Image from 'next/image';
 
 interface FeatureIcon {
@@ -21,11 +22,12 @@ interface BannerSlide {
 
 const BannerCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const router = useRouter();
 
   const bannerSlides: BannerSlide[] = [
     {
       id: 1,
-      title: "Drifter's Valley",
+      title: "Drifters Valley",
       location: "Nedumkandam, Idukki",
       description:
         "Tucked away in the misty highlands of Idukki, Drifters Valley is where silence speaks and nature leads the way. Wake to the scent of wild eucalyptus, follow hidden trails that whisper old forest tales, and lose yourself in the rhythm of rustling leaves. Designed for the wanderer at heart, this retreat is your pause between the pages — a soulful escape into the untouched.",
@@ -50,7 +52,7 @@ const BannerCarousel: React.FC = () => {
     },
     {
       id: 2,
-      title: " Vayaloram Retreat ",
+      title: "Vayaloram",
       location: "Kuttanad, Allapuzha",
       description:
         "Cradled on the edge of endless paddy fields, Vayaloram is where time slows to the rhythm of rustling palms and golden sunsets. Wake to birdsong and drifting morning mist. Walk barefoot on earthen paths, dine on heirloom recipes, and unwind in spaces designed to breathe. This is the heart of rural Kerala — quiet, grounded, and deeply nourishing.",
@@ -100,7 +102,7 @@ const BannerCarousel: React.FC = () => {
     },
     {
       id: 4,
-      title: "Saantara Retreat",
+      title: "Saantara",
       location: "Palakkad",
       description:
         "A sanctuary of stillness nestled amidst whispering trees and sacred silence. Saantara is a retreat for the inward journey — where ancient wellness traditions, mindful spaces, and nature's quiet embrace come together. Whether you're here to heal, reflect, or simply pause, Saantara offers the space to just be — deeply, gently, and wholly.",
@@ -165,6 +167,12 @@ const BannerCarousel: React.FC = () => {
     setCurrentSlide(index);
   };
 
+  // Navigation function for "Explore Packages" button
+  const handleExplorePackages = (retreatId: number, retreatTitle: string) => {
+    const slug = retreatTitle.toLowerCase().replace(/\s+/g, "-");
+    router.push(`/resorts/${slug}?id=${retreatId}`);
+  };
+
   return (
     <div className="relative w-[95%] h-[75vh]  md:h-screen max-w-full mx-auto my-3 overflow-hidden rounded-2xl">
       {/* Banner Images */}
@@ -196,7 +204,10 @@ const BannerCarousel: React.FC = () => {
                   {slide.description}
                 </p>
                 <div className="flex justify-center md:justify-start">
-                  <button className="border border-white text-white px-4 py-1 sm:px-5 sm:py-2 md:px-6 md:py-2 text-sm md:text-base hover:bg-white hover:text-gray-900 transition">
+                  <button 
+                    className="border border-white text-white px-4 py-1 sm:px-5 sm:py-2 md:px-6 md:py-2 text-sm md:text-base hover:bg-white hover:text-gray-900 transition"
+                    onClick={() => handleExplorePackages(bannerSlides[currentSlide].id, bannerSlides[currentSlide].title)}
+                  >
                     Explore Packages
                   </button>
                 </div>
