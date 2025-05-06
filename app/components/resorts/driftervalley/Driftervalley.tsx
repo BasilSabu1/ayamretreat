@@ -47,12 +47,11 @@ export default function DriftersvalleyRetreat() {
   return (
     <div className="font-sans text-gray-800">
       {/* Header */}
-      <div className="p-4 md:p-6">
-       
-        {/* Main Section with Text and Banner Image */}
-       
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="md:w-1/2 space-y-4">
+      <div className="p-4 md:p-6 bg-stone-50">
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* Left side - Logo, title, and features */}
+        <div className="md:w-1/2 flex flex-col space-y-4">
+          <div className="space-y-4">
             <Image
               src="/resorts/driftersvalley/logo.png"
               alt="Drifter's Valley Logo"
@@ -105,7 +104,7 @@ export default function DriftersvalleyRetreat() {
               outdoors.
             </p>
 
-            <div className="grid grid-cols-3 gap-6 pt-6">
+            <div className="grid grid-cols-3 gap-4 pt-4">
               <div className="flex flex-col items-center text-center">
                 <div className="bg-gray-100 rounded-full p-4 mb-3">
                   <Image
@@ -118,7 +117,7 @@ export default function DriftersvalleyRetreat() {
                     priority
                   />
                 </div>
-                <p className="text-sm md:text-base">
+                <p className="text-xs md:text-sm font-bold">
                   Slow mornings with warm tea and valley views
                 </p>
               </div>
@@ -134,7 +133,7 @@ export default function DriftersvalleyRetreat() {
                     priority
                   />
                 </div>
-                <p className="text-sm md:text-base">
+                <p className="text-xs md:text-sm font-bold">
                   Serene mountaintop setting
                 </p>
               </div>
@@ -150,74 +149,75 @@ export default function DriftersvalleyRetreat() {
                     priority
                   />
                 </div>
-                <p className="text-sm md:text-base">
+                <p className="text-xs md:text-sm font-bold">
                   Cozy tented stays with modern comforts
                 </p>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="md:w-1/2 space-y-2">
-            <div className="relative">
-              <Image
-                src="/resorts/driftersvalley/bannersection.png"
-                alt="Driftersvalley Retreat Main View"
-                width={600}
-                height={400}
-                className="w-full h-64 md:h-80 object-cover rounded-lg"
-                quality={100}
-              />
+        {/* Right side - Banner image and gallery */}
+        <div className="md:w-1/2 flex flex-col space-y-4">
+          <div className="relative">
+            <Image
+              src="/resorts/driftersvalley/bannersection.png"
+              alt="Drifters Valley Main View"
+              width={700}
+              height={500}
+              className="w-full h-72 md:h-96 object-cover rounded-lg"
+              quality={100}
+            />
+          </div>
+
+          <div className="relative mt-2">
+            <div className="absolute inset-y-0 left-0 z-10 flex items-center">
+              <button
+                className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+                onClick={handlePrev}
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="h-5 w-5 text-gray-800" />
+              </button>
             </div>
 
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 z-10 flex items-center">
-                <button
-                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
-                  onClick={handlePrev}
-                  aria-label="Previous slide"
+            <div
+              ref={carouselRef}
+              className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {galleryImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`flex-shrink-0 cursor-pointer transition-opacity duration-300 ${
+                    activeSlide === index ? "opacity-100" : "opacity-70"
+                  }`}
                 >
-                  <ChevronLeft className="h-5 w-5 text-gray-800" />
-                </button>
-              </div>
+                  <Image
+                    src={image}
+                    alt={`Drifters Valley Gallery Image ${index + 1}`}
+                    width={120}
+                    height={80}
+                    className="h-16 w-24 object-cover rounded-md"
+                    quality={90}
+                  />
+                </div>
+              ))}
+            </div>
 
-              <div
-                ref={carouselRef}
-                className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            <div className="absolute inset-y-0 right-0 z-10 flex items-center">
+              <button
+                className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+                onClick={handleNext}
+                aria-label="Next slide"
               >
-                {galleryImages.map((image, index) => (
-                  <div
-                    key={index}
-                    className={`flex-shrink-0 cursor-pointer transition-opacity duration-300 ${
-                      activeSlide === index ? "opacity-100" : "opacity-70"
-                    }`}
-                  >
-                    <Image
-                      src={image}
-                      alt={`Driftersvalley Gallery Image ${index + 1}`}
-                      width={120}
-                      height={80}
-                      className="h-16 w-24 object-cover rounded-md"
-                      quality={90}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="absolute inset-y-0 right-0 z-10 flex items-center">
-                <button
-                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
-                  onClick={handleNext}
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="h-5 w-5 text-gray-800" />
-                </button>
-              </div>
+                <ChevronRight className="h-5 w-5 text-gray-800" />
+              </button>
             </div>
           </div>
         </div>
       </div>
-
+    </div>
       {/* Welcome Section */}
       <div className="relative mb-8">
         <div className="text-center py-8 px-4 md:px-8 bg-green-50">

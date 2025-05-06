@@ -28,10 +28,10 @@ const AboutUs: React.FC = () => {
           priority
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-12 lg:px-24">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-indigo-900 mb-2">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
             About Us
           </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl italic text-indigo-900 mb-4">
+          <p className="text-xl md:text-2xl lg:text-3xl italic text-white mb-4">
             Retreats with Soul. Journeys with Meaning.
           </p>
           <p className="text-base md:text-lg text-white max-w-3xl mx-auto leading-relaxed  bg-opacity-20 p-4 rounded-lg">

@@ -47,166 +47,14 @@ export default function SaantaraRetreat() {
   return (
     <div className="font-sans text-gray-800">
       {/* Header */}
-      <div className="p-4 md:p-6">
-        {/* Main Content Section */}
-        {/* Main Section with Text and Banner Image */}
-        {/* <div className="flex flex-col md:flex-row gap-6">
-          <div className="md:w-1/2 space-y-4">
-            <h1 className="text-3xl font-bold text-gray-800">
-              Saantara Retreat
-            </h1>
-            <div className="flex items-center space-x-2 text-sm">
-              <span className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mr-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-                Palakkad
-              </span>{" "}
-              <span className="text-gray-400">•</span>
-              <span className="bg-blue-400 text-black px-2 py-0.5 rounded-full">
-                Wellness & Luxury Stay
-              </span>
-            </div>
-            <p className="text-sm md:text-base">
-              Rooted in the heart of a traditional Kerala village, Saantara
-              invites you to step into the timeless wisdom of Ayurveda and
-              ancestral living. Housed in an elegant mana—a heritage Kerala
-              home—this retreat is a serene blend of architecture, culture, and
-              ancient healing. Here, wellness is not a trend; its a way of life.
-              Every detail honors balance, tradition, and slow, intentional
-              living. This is your invitation to Breathe in Tradition.
-            </p>
-
-            <div className="grid grid-cols-3 gap-4 pt-4">
-              <div className="flex flex-col items-center text-center">
-                <div className="rounded-full p-2 mb-2">
-                  <Image
-                    src="/resorts/saantara/featuredicons/icon1.png"
-                    alt="Coffee Estate"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 md:h-10 md:w-10"
-                    quality={100}
-                  />
-                </div>
-                <p className="text-xs md:text-sm">
-                  Restorative Ayurvedic therapies in a heritage Kerala home
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="rounded-full p-2 mb-2">
-                  <Image
-                    src="/resorts/saantara/featuredicons/icon2.png"
-                    alt="Heritage"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 md:h-10 md:w-10"
-                    quality={100}
-                  />
-                </div>
-                <p className="text-xs md:text-sm">
-                  Authentic village setting surrounded by coconut groves{" "}
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="rounded-full p-2 mb-2">
-                  <Image
-                    src="/resorts/saantara/featuredicons/icon3.png"
-                    alt="Nature"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 md:h-10 md:w-10"
-                    quality={100}
-                  />
-                </div>
-                <p className="text-xs md:text-sm">
-                  Deep cultural immersion with healing as a way of life{" "}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:w-1/2 space-y-2">
-            <div className="relative">
-              <Image
-                src="/resorts/saantara/bannersection.png"
-                alt="Saantara Retreat Main View"
-                width={600}
-                height={400}
-                className="w-full h-64 md:h-80 object-cover rounded-lg"
-                quality={100}
-              />
-            </div>
-
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 z-10 flex items-center">
-                <button
-                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
-                  onClick={handlePrev}
-                  aria-label="Previous slide"
-                >
-                  <ChevronLeft className="h-5 w-5 text-gray-800" />
-                </button>
-              </div>
-
-              <div
-                ref={carouselRef}
-                className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
-                {galleryImages.map((image, index) => (
-                  <div
-                    key={index}
-                    className={`flex-shrink-0 cursor-pointer transition-opacity duration-300 ${
-                      activeSlide === index ? "opacity-100" : "opacity-70"
-                    }`}
-                  >
-                    <Image
-                      src={image}
-                      alt={`Saantara Gallery Image ${index + 1}`}
-                      width={120}
-                      height={80}
-                      className="h-16 w-24 object-cover rounded-md"
-                      quality={90}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="absolute inset-y-0 right-0 z-10 flex items-center">
-                <button
-                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
-                  onClick={handleNext}
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="h-5 w-5 text-gray-800" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> */}
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="md:w-1/2 space-y-4">
+      <div className="p-4 md:p-6 bg-stone-50">
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* Left side - Logo, title, and features */}
+        <div className="md:w-1/2 flex flex-col space-y-4">
+          <div className="space-y-4">
             <Image
               src="/resorts/saantara/logo.png"
-              alt="Drifter's Valley Logo"
+              alt="Saantara Retreat Logo"
               width={220}
               height={100}
               className="h-20 md:h-32 w-auto"
@@ -255,7 +103,7 @@ export default function SaantaraRetreat() {
               living. This is your invitation to Breathe in Tradition.
             </p>
 
-            <div className="grid grid-cols-3 gap-6 pt-6">
+            <div className="grid grid-cols-3 gap-4 pt-4">
               <div className="flex flex-col items-center text-center">
                 <div className="bg-gray-100 rounded-full p-4 mb-3">
                   <Image
@@ -268,7 +116,7 @@ export default function SaantaraRetreat() {
                     priority
                   />
                 </div>
-                <p className="text-sm md:text-base">
+                <p className="text-xs md:text-sm font-bold">
                   Restorative Ayurvedic therapies in a heritage Kerala home
                 </p>
               </div>
@@ -284,7 +132,7 @@ export default function SaantaraRetreat() {
                     priority
                   />
                 </div>
-                <p className="text-sm md:text-base">
+                <p className="text-xs md:text-sm font-bold">
                   Authentic village setting surrounded by coconut groves
                 </p>
               </div>
@@ -300,74 +148,75 @@ export default function SaantaraRetreat() {
                     priority
                   />
                 </div>
-                <p className="text-sm md:text-base">
+                <p className="text-xs md:text-sm font-bold">
                   Deep cultural immersion with healing as a way of life
                 </p>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="md:w-1/2 space-y-2">
-            <div className="relative">
-              <Image
-                src="/resorts/saantara/bannersection.png"
-                alt="Saantara Retreat Main View"
-                width={600}
-                height={400}
-                className="w-full h-64 md:h-80 object-cover rounded-lg"
-                quality={100}
-              />
+        {/* Right side - Banner image and gallery */}
+        <div className="md:w-1/2 flex flex-col space-y-4">
+          <div className="relative">
+            <Image
+              src="/resorts/saantara/bannersection.png"
+              alt="Saantara Retreat Main View"
+              width={700}
+              height={500}
+              className="w-full h-72 md:h-96 object-cover rounded-lg"
+              quality={100}
+            />
+          </div>
+
+          <div className="relative mt-2">
+            <div className="absolute inset-y-0 left-0 z-10 flex items-center">
+              <button
+                className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+                onClick={handlePrev}
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="h-5 w-5 text-gray-800" />
+              </button>
             </div>
 
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 z-10 flex items-center">
-                <button
-                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
-                  onClick={handlePrev}
-                  aria-label="Previous slide"
+            <div
+              ref={carouselRef}
+              className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {galleryImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`flex-shrink-0 cursor-pointer transition-opacity duration-300 ${
+                    activeSlide === index ? "opacity-100" : "opacity-70"
+                  }`}
                 >
-                  <ChevronLeft className="h-5 w-5 text-gray-800" />
-                </button>
-              </div>
+                  <Image
+                    src={image}
+                    alt={`Saantara Gallery Image ${index + 1}`}
+                    width={120}
+                    height={80}
+                    className="h-16 w-24 object-cover rounded-md"
+                    quality={90}
+                  />
+                </div>
+              ))}
+            </div>
 
-              <div
-                ref={carouselRef}
-                className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            <div className="absolute inset-y-0 right-0 z-10 flex items-center">
+              <button
+                className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+                onClick={handleNext}
+                aria-label="Next slide"
               >
-                {galleryImages.map((image, index) => (
-                  <div
-                    key={index}
-                    className={`flex-shrink-0 cursor-pointer transition-opacity duration-300 ${
-                      activeSlide === index ? "opacity-100" : "opacity-70"
-                    }`}
-                  >
-                    <Image
-                      src={image}
-                      alt={`Saantara Gallery Image ${index + 1}`}
-                      width={120}
-                      height={80}
-                      className="h-16 w-24 object-cover rounded-md"
-                      quality={90}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="absolute inset-y-0 right-0 z-10 flex items-center">
-                <button
-                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
-                  onClick={handleNext}
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="h-5 w-5 text-gray-800" />
-                </button>
-              </div>
+                <ChevronRight className="h-5 w-5 text-gray-800" />
+              </button>
             </div>
           </div>
         </div>
       </div>
-
+    </div>
       {/* Welcome Section */}
       <div className="relative mb-8">
         <div className="text-center py-8 px-4 md:px-8 bg-green-50">

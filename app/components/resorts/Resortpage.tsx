@@ -19,18 +19,18 @@ type Resort = {
 const resorts: Resort[] = [
   {
     id: "1",
-    name: "Sunset Palms",
-    location: "Alappuzha, Kerala",
-    image: "/resorts/driftersvalley.png",
+    name: " Jo And Sams Villa",
+    location: "Kochi, Kerala",
+    image: "/resorts/home.avif",
     state: "Kerala",
   },
-  {
-    id: "2",
-    name: "Ocean Breeze",
-    location: "Varkala, Kerala",
-    image: "/resorts/driftersvalley.png",
-    state: "Kerala",
-  },
+  // {
+  //   id: "2",
+  //   name: "Ocean Breeze",
+  //   location: "Varkala, Kerala",
+  //   image: "/resorts/home.avif",
+  //   state: "Kerala",
+  // },
   {
     id: "3",
     name: "Saantara",
@@ -66,13 +66,13 @@ const resorts: Resort[] = [
     image: "/resorts/kailasam.png",
     state: "Kerala",
   },
-  {
-    id: "8",
-    name: "Beach Paradise",
-    location: "Goa",
-    image: "/resorts/driftersvalley.png",
-    state: "Goa",
-  },
+  // {
+  //   id: "8",
+  //   name: "Beach Paradise",
+  //   location: "Goa",
+  //   image: "/resorts/driftersvalley.png",
+  //   state: "Goa",
+  // },
 ];
 
 // Get unique states
@@ -91,7 +91,6 @@ export default function PartnerResorts() {
       : resorts.filter((resort) => resort.state === activeState);
 
   const handleKnowMore = (resortId: string, resortName: string) => {
-   
     const slug = resortName.toLowerCase().replace(/\s+/g, "-");
     router.push(`/resorts/${slug}?id=${resortId}`);
   };
@@ -175,10 +174,11 @@ export default function PartnerResorts() {
         <div className="md:col-span-2">
           <h2 className="text-2xl font-semibold mb-4">Why Subscribe?</h2>
           <p className="text-gray-700">
-            Whether you&apos;re a frequent traveler, a wellness seeker, or someone
-            who loves sharing soulful experiences with others — this is your key
-            to a deeper connection with our world. Our retreats are accessible
-            only through subscription, making this your exclusive path in.
+            Whether you&apos;re a frequent traveler, a wellness seeker, or
+            someone who loves sharing soulful experiences with others — this is
+            your key to a deeper connection with our world. Our retreats are
+            accessible only through subscription, making this your exclusive
+            path in.
           </p>
         </div>
         <div className="bg-gray-50 p-6 rounded">

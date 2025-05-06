@@ -1,5 +1,7 @@
+"use client";
+
 import { FC } from "react";
-import { CheckCircle } from "lucide-react";
+import { Check } from "lucide-react";
 import Image from "next/image";
 
 // Define types for membership plans
@@ -7,114 +9,144 @@ interface BenefitItem {
   text: string;
 }
 
-interface PlanProps {
-  title: string;
+// interface PlanProps {
+//   title: string;
+//   price: number;
+//   originalPrice?: number;
+//   currency: string;
+//   interval: string;
+//   benefits: BenefitItem[];
+//   isPopular?: boolean;
+//   limitedOffer?: boolean;
+//   referrals?: number;
+//   cardColor: string;
+//   textColor: string;
+//   btnColor: string;
+//   btnHoverColor: string;
+//   btnTextColor: string;
+//   iconColor: string;
+// }
+
+// Define specific props for MembershipCard
+interface MembershipCardProps {
+  type: string;
   price: number;
-  originalPrice?: number;
-  currency: string;
-  interval: string;
-  benefits: BenefitItem[];
+  discountedPrice?: number;
+  benefits: BenefitItem[]; // Using BenefitItem type to match with benefits array
   isPopular?: boolean;
-  limitedOffer?: boolean;
-  referrals?: number;
-  cardColor: string;
-  textColor: string;
-  btnColor: string;
-  btnHoverColor: string;
-  btnTextColor: string;
-  iconColor: string;
+  isLimitedTimeOffer?: boolean;
 }
 
-const MembershipPlan: FC<PlanProps> = ({
-  title,
+const MembershipCard: FC<MembershipCardProps> = ({
+  type,
   price,
-  originalPrice,
-  currency,
-  interval,
+  discountedPrice,
   benefits,
   isPopular = false,
-  limitedOffer = false,
-  referrals,
-  cardColor,
-  textColor,
-  btnColor,
-  btnHoverColor,
-  btnTextColor,
-  iconColor,
+  isLimitedTimeOffer = false,
 }) => {
-  return (
-    <div
-      className={`relative rounded-lg overflow-hidden ${cardColor} ${textColor} flex flex-col h-full shadow-xl`}
-    >
-      {isPopular && (
-        <div className="absolute top-2 right-2 z-10">
-          <span className="bg-purple-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-lg">
-            Popular
-          </span>
-        </div>
-      )}
-      {limitedOffer && (
-        <div className="absolute top-0 right-0 z-10">
-          <div className="bg-yellow-500 text-black text-xs font-medium px-3 py-1 transform translate-x-4 -translate-y-1 shadow-md">
-            Limited Time Offer
-          </div>
-        </div>
-      )}
+  const isGold = type === "Gold";
 
+  return (
+    <div className="relative bg-black text-white rounded-lg overflow-hidden shadow-xl flex flex-col h-full">
+      {/* Card Header */}
       <div className="p-6">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <div className="flex items-baseline mb-4">
-          <span className="text-lg font-bold">{currency}</span>
-          <span className="text-3xl font-bold">{price.toLocaleString()}</span>
-          {originalPrice && (
-            <span className="ml-2 text-lg text-gray-400 line-through">
-              {currency}
-              {originalPrice.toLocaleString()}
+        {isPopular && (
+          <div className="absolute top-2 right-2">
+            <span className="bg-purple-600 text-white text-xs font-medium px-3 py-1 rounded-full">
+              Popular
             </span>
+          </div>
+        )}
+
+        <h3 className="text-xl font-bold mb-3">{type}</h3>
+
+        {/* Price Section */}
+        <div className="mb-4">
+          {discountedPrice ? (
+            <>
+              <div className="flex items-baseline mb-1">
+                <span className="text-gray-400 line-through text-lg">
+                  ₹{price.toLocaleString()}
+                </span>
+                {isLimitedTimeOffer && (
+                  <div
+                    className="ml-2 text-black text-xs font-medium px-2 py-0.5 rounded"
+                    style={{
+                      background: "linear-gradient(to right, #ffd700, #b8860b)",
+                      border: "1px solid #b8860b",
+                    }}
+                  >
+                    Limited time offer price
+                  </div>
+                )}
+              </div>
+              <div className="flex items-baseline">
+                <span className="text-lg">₹</span>
+                <span className="text-3xl font-bold">
+                  {discountedPrice.toLocaleString()}
+                </span>
+              </div>
+            </>
+          ) : (
+            <div className="flex items-baseline">
+              <span className="text-lg">₹</span>
+              <span className="text-3xl font-bold">
+                {price.toLocaleString()}
+              </span>
+            </div>
           )}
+          <div className="text-xs text-gray-400 mt-1">one time payment</div>
         </div>
-        <div className="text-xs text-gray-400 mb-4">
-          {interval === "payment" ? "one time payment" : `per ${interval}`}
-        </div>
+
+        {/* Description */}
         <p className="text-sm text-gray-300 mb-4">
           Welcome to our exclusive subscription program — your gateway
         </p>
+
+        {/* Subscribe Button */}
         <button
-          className={`w-full ${btnColor} hover:${btnHoverColor} ${btnTextColor} font-bold py-2 rounded transition-colors shadow-lg`}
+          className="w-full py-2 font-bold rounded text-black"
+          style={{
+            background: isGold
+              ? "linear-gradient(to bottom, #ffd700, #daa520)"
+              : "linear-gradient(to bottom, #e0e0e0, #a0a0a0)",
+            border: isGold ? "1px solid #b8860b" : "1px solid #808080",
+          }}
         >
           Subscribe
         </button>
       </div>
 
-      <div className="px-6 pb-6 mt-2">
-        <div className="border-t border-gray-700 pt-4 mb-4">
+      {/* Benefits Section */}
+      <div className="px-6 pb-6 flex-grow">
+        <div className="border-t border-gray-700 pt-4">
           <h4 className="text-center uppercase text-sm tracking-wider mb-4 font-medium">
             BENEFITS
           </h4>
           <ul className="space-y-3">
             {benefits.map((benefit, index) => (
-              <li key={index} className="flex items-start gap-2">
-                <CheckCircle
-                  className={`h-5 w-5 ${iconColor} flex-shrink-0 mt-0.5`}
+              <li key={index} className="flex items-start gap-2 text-sm">
+                <Check
+                  className={`h-5 w-5 ${
+                    isGold ? "text-yellow-500" : "text-gray-400"
+                  } flex-shrink-0 mt-0.5`}
                 />
-                <span className="text-sm text-gray-300">{benefit.text}</span>
+                <span className="text-gray-300">{benefit.text}</span>
               </li>
             ))}
           </ul>
         </div>
-        {referrals && (
-          <div className="mt-4">
-            <p className="text-xs text-gray-300">
-              Total {referrals} referrals per year. After {referrals} referrals,
-              get 10% of the stay cost back as credit.
-            </p>
-          </div>
-        )}
-        <div className="mt-4">
-          <a href="#" className="text-xs text-gray-400 hover:text-white">
-            View more +
+
+        {/* View More Link */}
+        {/* <div className="mt-4 text-right">
+          <a
+            href="#"
+            className="text-xs text-gray-400 hover:text-white inline-flex items-center"
+          >
+            View more <span className="ml-1">+</span>
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -123,13 +155,13 @@ const MembershipPlan: FC<PlanProps> = ({
 const MembershipSection: FC = () => {
   const goldBenefits = [
     {
-      text: "One Free Stay for 1 Night(per/2 nts) total Every Year for 5 years at any given Retreat property.",
+      text: "One Free Stay for 1 Night(2 pax/2 kids) Each Year at Any of our Jaipur Retreat property.",
     },
     {
-      text: "50% Discount on all associated resorts/ Retreats for additional days during the year.",
+      text: "10% Discount on all associated resorts/homestays for additional stays during the year.",
     },
     {
-      text: "Referral Benefit: Get 50% of the stay cost back as credit when you refer a friend (non-member) who books a stay.",
+      text: "Referral Benefit: Get 10% of the stay cost back as credit when you refer a friend (non-member) who books a stay.",
     },
     {
       text: "Total 10 referrals per year. After 10 referrals, get 10% of the stay cost back as credit.",
@@ -138,13 +170,13 @@ const MembershipSection: FC = () => {
 
   const platinumBenefits = [
     {
-      text: "One Free Stay for 2 Nights(per/4 nts) total Every Year for 5 years at any given Retreat property.",
+      text: "One Free Stay for 2 Nights(2 pax/2 kids) Each Year at Any of our Jaipur Retreat property.",
     },
     {
-      text: "50% Discount on all associated resorts/ Retreats for additional days during the year.",
+      text: "50% Discount on all associated resorts/homestays for additional stays during the year.",
     },
     {
-      text: "Referral Benefit: Get 50% of the stay cost back as credit when you refer a friend (non-member) who books a stay.",
+      text: "Referral Benefit: Get 30% of the stay cost back as credit when you refer a friend (non-member) who books a stay.",
     },
     { text: "Unlimited referrals." },
   ];
@@ -153,7 +185,7 @@ const MembershipSection: FC = () => {
     <div className="w-full bg-white">
       {/* Hero Section with Full Background Image */}
       <div
-        className="relative w-full h-96 overflow-hidden"
+        className="relative w-full h-[500px] md:h-[600px] overflow-hidden"
         style={{
           backgroundImage: `url('/membership/banner.png')`,
           backgroundSize: "cover",
@@ -162,18 +194,21 @@ const MembershipSection: FC = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-blue-500/30 to-green-400/30" />
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-            Become a Member
-          </h1>
-          <h2 className="text-2xl md:text-3xl font-medium text-white italic">
-            Unlock the Journey
-          </h2>
-          <p className="mt-4 max-w-lg text-white text-sm md:text-base">
-            Welcome to our exclusive subscription program — your gateway to
-            unforgettable stays across our 5 signature retreats and partner
-            resorts. Choose a plan that suits your lifestyle and start earning
-            incredible rewards for every referral.
-          </p>
+          <div className="flex flex-col max-w-3xl">
+            <h1 className="text-5xl md:text-6xl font-bold text-yellow-300 mb-2">
+              Become a Member
+            </h1>
+            <h2 className="text-3xl md:text-4xl font-medium text-teal-800 italic mb-6">
+              Unlock the Journey
+            </h2>
+
+            <p className="ml-0  max-w-lg text-base md:text-lg text-gray-800 font-medium">
+              Welcome to our exclusive subscription program — your gateway to
+              unforgettable stays across our 5 signature retreats and partner
+              resorts. Choose a plan that suits your lifestyle and start earning
+              incredible rewards for every referral.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -181,10 +216,9 @@ const MembershipSection: FC = () => {
       <div
         className="relative pt-12 pb-24"
         style={{
-          backgroundImage: `url('/api/placeholder/800/400')`,
+          backgroundImage: `url('/membership/planbackground.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center bottom",
-          backgroundAttachment: "fixed",
         }}
       >
         {/* Top wave decoration */}
@@ -205,37 +239,21 @@ const MembershipSection: FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* Gold Plan */}
-            <MembershipPlan
-              title="Gold"
-              price={10000}
-              currency="₹"
-              interval="payment"
+            <MembershipCard
+              type="Gold"
+              discountedPrice={10000}
+              price={20000}
               benefits={goldBenefits}
-              referrals={10}
-              cardColor="bg-black"
-              textColor="text-white"
-              btnColor="bg-yellow-500"
-              btnHoverColor="bg-yellow-600"
-              btnTextColor="text-black"
-              iconColor="text-yellow-500"
             />
 
             {/* Platinum Plan */}
-            <MembershipPlan
-              title="Platinum"
-              price={50000}
-              originalPrice={100000}
-              currency="₹"
-              interval="payment"
+            <MembershipCard
+              type="Platinum"
+              price={100000}
+              discountedPrice={50000}
               benefits={platinumBenefits}
               isPopular={true}
-              limitedOffer={true}
-              cardColor="bg-black"
-              textColor="text-white"
-              btnColor="bg-yellow-500"
-              btnHoverColor="bg-yellow-600"
-              btnTextColor="text-black"
-              iconColor="text-yellow-500"
+              isLimitedTimeOffer={true}
             />
           </div>
 
@@ -260,7 +278,7 @@ const MembershipSection: FC = () => {
                 {/* Vertical divider for desktop */}
                 <div className="hidden md:block w-px h-32 bg-gray-200"></div>
 
-                {/* Image icon */}
+                {/* Icons section */}
                 <div className="relative w-36 h-36 flex-shrink-0 transform rotate-12">
                   <Image
                     src="/membership/whysubscribe.png"

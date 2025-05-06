@@ -9,6 +9,7 @@ import DriftersValleyResort from "@/app/components/resorts/driftervalley/Drifter
 import VayaloramResort from "@/app/components/resorts/vayaloram/Vayaloram";
 import AdventureBay from "@/app/components/resorts/adventurebay/AdventureBay";
 import Kailasam from "@/app/components/resorts/kailasam/Kailasam";
+import ResortHome from "@/app/components/resorts/resorthome/Home";
 
 export default function ResortPage() {
   const params = useParams();
@@ -17,6 +18,7 @@ export default function ResortPage() {
   // Render component based on slug
   return (
     <div className=" mx-auto  py-12">
+      {slug === "resort-home" && <ResortHome />}
       {slug === "saantara" && <SaantaraResort />}
       {slug === "drifters-valley" && <DriftersValleyResort />}
       {slug === "vayaloram" && <VayaloramResort />}
@@ -24,13 +26,12 @@ export default function ResortPage() {
       {slug === "kailasam" && <Kailasam />}
 
       {/* Fallback if no matching resort */}
-      {slug !== "saantara" &&
+      {slug !== "resort-home" &&
+        slug !== "saantara" &&
         slug !== "drifters-valley" &&
         slug !== "vayaloram" &&
         slug !== "adventure-bay" &&
-        slug !== "kailasam" &&
-
-         (
+        slug !== "kailasam" && (
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Resort not found</h1>
             <p>The resort &quot;{slug}&quot; could not be found.</p>

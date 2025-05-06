@@ -2,16 +2,17 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function AdventureBayRetreat() {
+export default function ResortHome() {
   const [showMore, setShowMore] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
 
   const galleryImages = [
-    "/resorts/adventurebay/gallery/gallery1.png",
-    "/resorts/adventurebay/gallery/gallery2.png",
-    "/resorts/adventurebay/gallery/gallery3.png",
+    "/resorts/house/gallery/gallery1.png",
+    "/resorts/house/gallery/gallery2.png",
+    "/resorts/house/gallery/gallery3.png",
   ];
+
   const handleNext = () => {
     setActiveSlide((current) => {
       const newIndex = (current + 1) % galleryImages.length;
@@ -52,8 +53,8 @@ export default function AdventureBayRetreat() {
           <div className="md:w-1/2 flex flex-col space-y-4">
             <div className="space-y-4">
               <Image
-                src="/resorts/adventurebay/logo.png"
-                alt="Adventure Bay Logo"
+                src="/resorts/house/logo.png"
+                alt="Resort Home Logo"
                 width={220}
                 height={100}
                 className="h-20 md:h-32 w-auto"
@@ -61,7 +62,7 @@ export default function AdventureBayRetreat() {
                 priority
               />
               <h1 className="text-3xl font-bold text-gray-800">
-                Adventure Bay
+                Jo And Sams Villa
               </h1>
               <div className="flex items-center space-x-2 text-sm">
                 <span className="flex items-center">
@@ -85,29 +86,30 @@ export default function AdventureBayRetreat() {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  Marari
+                  Kochi
                 </span>
                 <span className="text-gray-400">•</span>
                 <span className="bg-blue-400 text-black px-2 py-0.5 rounded-full">
-                  Adventure
+                  Wellness & Luxury Stay
                 </span>
               </div>
               <p className="text-sm md:text-base">
-                Nestled along a stretch of pristine white sands, Adventure Bay
-                is your perfect beachside escape. Whether you&apos;re chasing
-                the golden glow of sunrise or unwinding to the colors of sunset,
-                this retreat offers something for everyone. From laid-back beach
-                strolls to lively group games and quiet moments of reflection,
-                Adventure Bay is where memories are made—for families, friends,
-                and solo seekers alike.
+                Rooted in the heart of a traditional Kerala village, Resort Home
+                invites you to step into the timeless wisdom of Ayurveda and
+                ancestral living. Housed in an elegant mana—a heritage Kerala
+                home—this retreat is a serene blend of architecture, culture,
+                and ancient healing. Here, wellness is not a trend; it's a way
+                of life. Every detail honors balance, tradition, and slow,
+                intentional living. This is your invitation to Breathe in
+                Tradition.
               </p>
 
               <div className="grid grid-cols-3 gap-4 pt-4">
                 <div className="flex flex-col items-center text-center">
                   <div className="bg-gray-100 rounded-full p-4 mb-3">
                     <Image
-                      src="/resorts/adventurebay/featuredicons/icon3.png"
-                      alt="Beachfront"
+                      src="/resorts/house/featuredicons/icon1.png"
+                      alt="Coffee Estate"
                       width={32}
                       height={32}
                       className="h-8 w-8"
@@ -116,14 +118,14 @@ export default function AdventureBayRetreat() {
                     />
                   </div>
                   <p className="text-xs md:text-sm font-bold">
-                    Beachfront stays with endless ocean views
+                    Restorative Ayurvedic therapies in a heritage Kerala home
                   </p>
                 </div>
                 <div className="flex flex-col items-center text-center">
                   <div className="bg-gray-100 rounded-full p-4 mb-3">
                     <Image
-                      src="/resorts/adventurebay/featuredicons/icon1.png"
-                      alt="Activities"
+                      src="/resorts/house/featuredicons/icon2.png"
+                      alt="Heritage"
                       width={32}
                       height={32}
                       className="h-8 w-8"
@@ -132,14 +134,14 @@ export default function AdventureBayRetreat() {
                     />
                   </div>
                   <p className="text-xs md:text-sm font-bold">
-                    Group activities, beach sports, and bonfires
+                    Authentic village setting surrounded by coconut groves
                   </p>
                 </div>
                 <div className="flex flex-col items-center text-center">
                   <div className="bg-gray-100 rounded-full p-4 mb-3">
                     <Image
-                      src="/resorts/adventurebay/featuredicons/icon2.png"
-                      alt="Getaways"
+                      src="/resorts/house/featuredicons/icon3.png"
+                      alt="Nature"
                       width={32}
                       height={32}
                       className="h-8 w-8"
@@ -148,8 +150,7 @@ export default function AdventureBayRetreat() {
                     />
                   </div>
                   <p className="text-xs md:text-sm font-bold">
-                    Ideal for solo travelers, friend circles, and family
-                    getaways
+                    Deep cultural immersion with healing as a way of life
                   </p>
                 </div>
               </div>
@@ -160,8 +161,8 @@ export default function AdventureBayRetreat() {
           <div className="md:w-1/2 flex flex-col space-y-4">
             <div className="relative">
               <Image
-                src="/resorts/adventurebay/bannersection.png"
-                alt="Adventure Bay Main View"
+                src="/resorts/house/bannersection.avif"
+                alt="Resort Home Main View"
                 width={700}
                 height={500}
                 className="w-full h-72 md:h-96 object-cover rounded-lg"
@@ -194,7 +195,7 @@ export default function AdventureBayRetreat() {
                   >
                     <Image
                       src={image}
-                      alt={`Adventure Bay Gallery Image ${index + 1}`}
+                      alt={`Resort Home Gallery Image ${index + 1}`}
                       width={120}
                       height={80}
                       className="h-16 w-24 object-cover rounded-md"
@@ -222,24 +223,26 @@ export default function AdventureBayRetreat() {
       <div className="relative mb-8">
         <div className="text-center py-8 px-4 md:px-8 bg-green-50">
           <h2 className="text-3xl font-serif text-green-800 mb-4">
-            Welcome to the Shoreline
+            Welcome to Resort Home
           </h2>
           <p className="max-w-3xl mx-auto text-sm md:text-base">
-            Where the tide carries your worries away and the breeze brings you
-            back to life. At Adventure Bay, every day is a mix of sun, sea, and
-            a little something unexpected. Come for the waves—stay for the
-            stories.
+            Step across the threshold of time. With every scent of herbal oil,
+            every chant carried on the breeze, and every bite of healing food,
+            you're wrapped in centuries of care. Here, you don't just experience
+            tradition—you breathe it in.
           </p>
         </div>
 
-        {/* Large Image with Pool - Full width */}
-        <div className="w-full mt-4">
-          <div className="relative w-full h-64 md:h-96 lg:h-[500px] overflow-hidden">
+        <div className="w-full mt-4 aspect-w-16 aspect-h-9">
+          <div
+            className="relative w-full h-auto overflow-hidden"
+            style={{ paddingBottom: "56.25%" }}
+          >
             <Image
-              src="/resorts/adventurebay/welcome.png"
-              alt="Adventure Bay Villa with Pool"
+              src="/resorts/house/welcomesection.avif"
+              alt="Resort Home Villa with Forest View"
               fill
-              className="object-cover w-full h-full"
+              className="object-contain w-full h-full"
               quality={100}
             />
           </div>
@@ -250,46 +253,44 @@ export default function AdventureBayRetreat() {
       <div className="px-4 md:px-6 mb-8">
         <div className="border border-green-200 rounded-lg p-6">
           <div className="flex flex-col md:flex-row gap-6">
-            {/* What to Expect */}
             <div className="md:w-1/2">
               <h3 className="font-bold text-lg mb-4">What to Expect:</h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Morning dips in crystal-clear waters and golden beach walks{" "}
+                    Personalized Ayurvedic consultations and treatment plans
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Beach games, volleyball matches, and sandcastle throwdowns{" "}
+                    Daily massages, herbal therapies, and steam baths
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Evenings around a bonfire with music, laughter, and grilled
-                    bites
+                    Stay in a beautifully restored traditional mana with open
+                    courtyards and wooden pillars
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Oceanfront cottages with hammocks and chill-out zones{" "}
+                    Village walks and lessons in Kerala's healing heritage
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Local seafood, tropical fruit spreads, and fresh coconut
-                    sips by the shore
+                    Plant-based, Ayurvedic meals prepared using age-old recipes
+                    and local ingredients
                   </span>
                 </li>
               </ul>
             </div>
 
-            {/* Property Amenities & Room Features */}
             <div className="md:w-1/2">
               <div className="mb-6">
                 <h3 className="font-bold text-lg mb-4">Property Amenities</h3>
@@ -298,37 +299,37 @@ export default function AdventureBayRetreat() {
                     {
                       alt: "Parking",
                       label: "Secured parking",
-                      img: "/resorts/adventurebay/propertiesamenties/parking.png",
+                      img: "/resorts/house/propertiesamenties/parking.png",
                     },
                     {
                       alt: "Books",
                       label: "Books, DVDs, music for children",
-                      img: "/resorts/adventurebay/propertiesamenties/books.png",
+                      img: "/resorts/house/propertiesamenties/books.png",
                     },
                     {
                       alt: "Yoga",
                       label: "Yoga classes",
-                      img: "/resorts/adventurebay/propertiesamenties/yoga.png",
+                      img: "/resorts/house/propertiesamenties/yoga.png",
                     },
                     {
                       alt: "Free WiFi",
                       label: "Free WiFi",
-                      img: "/resorts/adventurebay/propertiesamenties/freewifi.png",
+                      img: "/resorts/house/propertiesamenties/freewifi.png",
                     },
                     {
                       alt: "Bicycle",
                       label: "Bicycle rental",
-                      img: "/resorts/adventurebay/propertiesamenties/bicycle.png",
+                      img: "/resorts/house/propertiesamenties/bicycle.png",
                     },
                     {
                       alt: "Bicycle",
                       label: "Bicycle Available",
-                      img: "/resorts/adventurebay/propertiesamenties/bicycleavailable.png",
+                      img: "/resorts/house/propertiesamenties/bicycleavailable.png",
                     },
                     {
                       alt: "Play area",
                       label: "Indoor play area for children",
-                      img: "/resorts/adventurebay/propertiesamenties/playarea.png",
+                      img: "/resorts/house/propertiesamenties/playarea.png",
                     },
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center">
@@ -353,42 +354,42 @@ export default function AdventureBayRetreat() {
                     {
                       alt: "AC",
                       label: "Air conditioning",
-                      img: "/resorts/adventurebay/roomfeatures/airconditioning.png",
+                      img: "/resorts/house/roomfeatures/airconditioning.png",
                     },
                     {
                       alt: "Housekeeping",
                       label: "House keeping",
-                      img: "/resorts/adventurebay/roomfeatures/housekeeping.png",
+                      img: "/resorts/house/roomfeatures/housekeeping.png",
                     },
                     {
                       alt: "Balcony",
                       label: "Private balcony",
-                      img: "/resorts/adventurebay/roomfeatures/balcony.png",
+                      img: "/resorts/house/roomfeatures/balcony.png",
                     },
                     {
                       alt: "Room service",
                       label: "Room service",
-                      img: "/resorts/adventurebay/roomfeatures/roomservice.png",
+                      img: "/resorts/house/roomfeatures/roomservice.png",
                     },
                     {
                       alt: "Kitchenette",
                       label: "Kitchenette",
-                      img: "/resorts/adventurebay/roomfeatures/kitchen.png",
+                      img: "/resorts/house/roomfeatures/kitchen.png",
                     },
                     {
                       alt: "Radio",
                       label: "Radio",
-                      img: "/resorts/adventurebay/roomfeatures/radio.png",
+                      img: "/resorts/house/roomfeatures/radio.png",
                     },
                     {
                       alt: "Extra long beds",
                       label: "Extra long beds",
-                      img: "/resorts/adventurebay/roomfeatures/longbed.png",
+                      img: "/resorts/house/roomfeatures/longbed.png",
                     },
                     {
                       alt: "Bath/Shower",
                       label: "Bath/Shower",
-                      img: "/resorts/adventurebay/roomfeatures/bath.png",
+                      img: "/resorts/house/roomfeatures/bath.png",
                     },
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center">
@@ -426,23 +427,24 @@ export default function AdventureBayRetreat() {
             Why Choose This Retreat
           </h2>
           <p className="text-center mb-8 max-w-3xl mx-auto text-sm md:text-base">
-            Adventure Bay is where joy meets the shoreline. It&apos;s vibrant,
-            playful, and endlessly refreshing—perfect for those who want both
-            action and ease. Whether you are reconnecting with old friends,
-            making new ones, or just soaking in the sun with salt in your hair,
-            this retreat is about living in the moment and loving every bit of
-            it.
+            Resort Home is a return to our roots. In a world that constantly
+            pulls us forward, this retreat draws you inward—toward balance,
+            tradition, and holistic wellness. If you're seeking healing that
+            honors the body, mind, and spirit through generations of wisdom,
+            Resort Home is where your journey begins, gently and deeply.
           </p>
         </div>
 
-        {/* Full width image - fixed to be truly full width */}
         <div className="w-full">
-          <div className="relative w-full h-64 md:h-96 lg:h-[500px] overflow-hidden">
+          <div
+            className="relative w-full overflow-hidden"
+            style={{ paddingBottom: "56.25%" }}
+          >
             <Image
-              src="/resorts/adventurebay/whychoose.png"
-              alt="Ayurvedic herbs and treatments"
+              src="/resorts/house/whychoose.avif"
+              alt="Coffee plantations and forest views"
               fill
-              className="object-cover w-full h-full"
+              className="object-contain w-full h-full"
               quality={100}
               priority
             />

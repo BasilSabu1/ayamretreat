@@ -31,7 +31,7 @@ export default function Header() {
         {/* Navigation - desktop - positioned more to the right */}
         <nav className="hidden md:flex items-center ml-auto mr-20">
           <div className="flex space-x-12">
-          <Link
+            <Link
               href="/"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
@@ -67,7 +67,7 @@ export default function Header() {
         {/* Account button */}
         <div className="flex items-center space-x-4 text-lg">
           <Link
-            href="#account"
+            href="/account"
             className="hidden md:flex items-center text-gray-800 hover:text-blue-500"
           >
             <svg
@@ -139,11 +139,8 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg absolute top-16 right-0 left-0 z-10">
           <nav className="flex flex-col px-4 py-2">
-          <Link
-              href="/"
-              className="py-2 text-gray-800 hover:text-blue-500"
-            >
-             Home
+            <Link href="/" className="py-2 text-gray-800 hover:text-blue-500">
+              Home
             </Link>
             <Link
               href="/aboutus"
@@ -171,7 +168,7 @@ export default function Header() {
               Membership
             </Link>
             <Link
-              href="#account"
+              href="/"
               className="py-2 text-gray-800 hover:text-blue-500 flex items-center"
             >
               <svg
