@@ -14,7 +14,7 @@ export default function ComingSoon() {
       <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-blue-300 text-center px-4">
         <h1 className="text-4xl md:text-6xl font-bold text-blue-800 mb-4">Coming Soon</h1>
         <p className="text-lg md:text-xl text-blue-700 mb-6">
-          We're working  to bring this page . Stay tuned!
+          We&apos;re working  to bring this page . Stay tuned!
         </p>
         <button
           onClick={() => router.push("/")}

@@ -98,7 +98,7 @@ export default function ResortHome() {
                 invites you to step into the timeless wisdom of Ayurveda and
                 ancestral living. Housed in an elegant mana—a heritage Kerala
                 home—this retreat is a serene blend of architecture, culture,
-                and ancient healing. Here, wellness is not a trend; it's a way
+                and ancient healing. Here, wellness is not a trend; it&apos;s a way
                 of life. Every detail honors balance, tradition, and slow,
                 intentional living. This is your invitation to Breathe in
                 Tradition.
@@ -228,7 +228,7 @@ export default function ResortHome() {
           <p className="max-w-3xl mx-auto text-sm md:text-base">
             Step across the threshold of time. With every scent of herbal oil,
             every chant carried on the breeze, and every bite of healing food,
-            you're wrapped in centuries of care. Here, you don't just experience
+            you&apos;re wrapped in centuries of care. Here, you don&apos;t just experience
             tradition—you breathe it in.
           </p>
         </div>
@@ -278,7 +278,7 @@ export default function ResortHome() {
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Village walks and lessons in Kerala's healing heritage
+                    Village walks and lessons in Kerala&apos;s healing heritage
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -429,7 +429,7 @@ export default function ResortHome() {
           <p className="text-center mb-8 max-w-3xl mx-auto text-sm md:text-base">
             Resort Home is a return to our roots. In a world that constantly
             pulls us forward, this retreat draws you inward—toward balance,
-            tradition, and holistic wellness. If you're seeking healing that
+            tradition, and holistic wellness. If you&apos;re seeking healing that
             honors the body, mind, and spirit through generations of wisdom,
             Resort Home is where your journey begins, gently and deeply.
           </p>

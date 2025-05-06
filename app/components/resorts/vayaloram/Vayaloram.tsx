@@ -91,7 +91,7 @@ export default function VayaloramRetreat() {
           </span>
         </div>
         <p className="text-sm md:text-base">
-          Vayaloram Retreat is where Kerala's backwaters whisper
+          Vayaloram Retreat is where Kerala&apos;s backwaters whisper
           stories and the paddy fields stretch as far as the eye can see.
           From floating cottages gently rocking on the water to golden
           sunrises that melt into dreamy sunsets, this retreat brings
