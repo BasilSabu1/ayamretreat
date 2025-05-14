@@ -55,7 +55,7 @@ export default function PhilosophySection() {
               <h3 className="font-medium mb-2">Distinctive Retreats</h3>
               <p className="text-xs text-gray-600 px-4">
                 Five handpicked locations, each designed around a unique theme
-                and blend — from the mystic paths of Kalevian to the vibrant
+                and terrain - from the mystic calm of Kailasam to the vibrant
                 coastlines of Adventure Bay.
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function PhilosophySection() {
               <h3 className="font-medium mb-2">Rooted in Culture</h3>
               <p className="text-xs text-gray-600 px-4">
                 We work closely with local communities to preserve and share
-                indigenous knowledge, culture, and crafts.
+                indigenous knowledge, cuisine, and crafts.
               </p>
             </div>
 
@@ -92,7 +92,7 @@ export default function PhilosophySection() {
               <h3 className="font-medium mb-2">Sustainably Designed</h3>
               <p className="text-xs text-gray-600 px-4">
                 Built with nature, not against it — every structure and system
-                is designed to minimize footprint and maximize harmony.
+                is created to minimize footprint and maximize harmony.
               </p>
             </div>
           </div>

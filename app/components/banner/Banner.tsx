@@ -78,7 +78,7 @@ const BannerCarousel: React.FC = () => {
     {
       id: 3,
       title: "Adventure Bay",
-      location: "AdventureBay,Marari",
+      location: "Marari",
       description:
         "Where the land meets the sea and thrill meets tranquility. Adventure Bay is your gateway to coastal escapades — from kayaking through mangroves and hidden coves to evenings around beachside bonfires. Bold, untamed, and buzzing with energy, this retreat is made for the spirited soul who seeks movement, meaning, and moments that stay.",
       imageUrl: "/banner/adventure.png",

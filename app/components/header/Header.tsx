@@ -44,17 +44,18 @@ export default function Header() {
               About us
             </Link>
             <Link
-              href="/resorts"
-              className="text-gray-800 hover:text-blue-500 text-lg"
-            >
-              Resorts
-            </Link>
-            <Link
               href="/retreats"
               className="text-gray-800 hover:text-blue-500 text-lg"
             >
               Retreats
             </Link>
+            <Link
+              href="/resorts"
+              className="text-gray-800 hover:text-blue-500 text-lg"
+            >
+              Resorts
+            </Link>
+
             <Link
               href="/membership"
               className="text-gray-800 hover:text-blue-500 text-lg"
@@ -150,17 +151,19 @@ export default function Header() {
             </Link>
 
             <Link
-              href="/resorts"
-              className="text-gray-800 hover:text-blue-500 text-lg"
-            >
-              Resorts
-            </Link>
-            <Link
               href="/retreats"
               className="py-2 text-gray-800 hover:text-blue-500"
             >
               Retreats
             </Link>
+
+            <Link
+              href="/resorts"
+              className="text-gray-800 hover:text-blue-500 text-lg"
+            >
+              Resorts
+            </Link>
+
             <Link
               href="/membership"
               className="py-2 text-gray-800 hover:text-blue-500"

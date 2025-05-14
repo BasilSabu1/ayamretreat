@@ -56,19 +56,19 @@ const retreats = [
   {
     id: 1,
     title: "Drifters Valley",
-    location: "Wayanad/Western Ghats",
-    imageSrc: "/resorts/adventurebay.png",
+    location: "Nedumkandam, Idukki",
+    imageSrc: "/resorts/driftersvalley.png",
   },
   {
     id: 2,
     title: "Vayaloram",
-    location: "Palakkad",
-    imageSrc: "/resorts/vayaloram.png",
+    location: "Kuttannad, Alappuzha",
+    imageSrc: "/resorts/saantara.png",
   },
   {
     id: 3,
     title: "Adventure Bay",
-    location: "Alleppey",
+    location: "Marari",
     imageSrc: "/resorts/adventurebay.png",
   },
   {
@@ -80,8 +80,8 @@ const retreats = [
   {
     id: 5,
     title: "Saantara",
-    location: "Kozhikode",
-    imageSrc: "/resorts/saantara.png",
+    location: "Palakkad",
+    imageSrc: "/resorts/vayaloram.png",
   },
 ];
 

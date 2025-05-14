@@ -1,42 +1,53 @@
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function ResortHome() {
+export default function JoAndSamsVilla() {
   const [showMore, setShowMore] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [showCarousel, setShowCarousel] = useState(true);
+  const defaultBanner = "/resorts/house/bannersection.avif";
+  const [currentBanner, setCurrentBanner] = useState<string>(defaultBanner);
+
 
   const galleryImages = [
-    "/resorts/house/gallery/gallery1.png",
-    "/resorts/house/gallery/gallery2.png",
-    "/resorts/house/gallery/gallery3.png",
+    "/resorts/house/bannersection.avif",
+    "/resorts/house/gallery/galleryimage1.avif",
+    "/resorts/house/gallery/galleryimage2.avif",
+    "/resorts/house/gallery/galleryimage3.avif",
   ];
+
 
   const handleNext = () => {
     setActiveSlide((current) => {
       const newIndex = (current + 1) % galleryImages.length;
       scrollToThumbnail(newIndex);
+      setCurrentBanner(galleryImages[newIndex]);
       return newIndex;
     });
   };
-
-  useEffect(() => {
-    const interval = setInterval(handleNext, 1000);
-    return () => clearInterval(interval);
-  }, [handleNext]);
 
   const handlePrev = () => {
     setActiveSlide((current) => {
       const newIndex = current === 0 ? galleryImages.length - 1 : current - 1;
       scrollToThumbnail(newIndex);
+      // Update main banner image
+      setCurrentBanner(galleryImages[newIndex]);
       return newIndex;
     });
   };
 
+  const selectThumbnail = (index: number) => {
+    setActiveSlide(index);
+    scrollToThumbnail(index);
+    // Update main banner image
+    setCurrentBanner(galleryImages[index]);
+  };
+
   const scrollToThumbnail = (index: number) => {
     if (carouselRef.current) {
-      const scrollAmount = index * (72 + 8); // thumbnail width (72px) + gap (8px)
+      const scrollAmount = index * (72 + 8); 
       carouselRef.current.scrollTo({
         left: scrollAmount,
         behavior: "smooth" as ScrollBehavior,
@@ -44,6 +55,16 @@ export default function ResortHome() {
     }
   };
 
+  // For auto-scroll, removing this as it could be annoying to users
+  // useEffect(() => {
+  //   const interval = setInterval(handleNext, 5000);
+  //   return () => clearInterval(interval);
+  // }, []);
+
+  // Toggle carousel visibility
+  const toggleCarousel = () => {
+    setShowCarousel(!showCarousel);
+  };
   return (
     <div className="font-sans text-gray-800">
       {/* Header */}
@@ -52,15 +73,15 @@ export default function ResortHome() {
           {/* Left side - Logo, title, and features */}
           <div className="md:w-1/2 flex flex-col space-y-4">
             <div className="space-y-4">
-              <Image
+              {/* <Image
                 src="/resorts/house/logo.png"
-                alt="Resort Home Logo"
+                alt="Jo And Sams Villa Logo"
                 width={220}
                 height={100}
                 className="h-20 md:h-32 w-auto"
                 quality={100}
                 priority
-              />
+              /> */}
               <h1 className="text-3xl font-bold text-gray-800">
                 Jo And Sams Villa
               </h1>
@@ -86,22 +107,20 @@ export default function ResortHome() {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  Kochi
+                  Kochi, Kerala
                 </span>
                 <span className="text-gray-400">•</span>
                 <span className="bg-blue-400 text-black px-2 py-0.5 rounded-full">
-                  Wellness & Luxury Stay
+                  Luxury Heritage Stay
                 </span>
               </div>
               <p className="text-sm md:text-base">
-                Rooted in the heart of a traditional Kerala village, Resort Home
-                invites you to step into the timeless wisdom of Ayurveda and
-                ancestral living. Housed in an elegant mana—a heritage Kerala
-                home—this retreat is a serene blend of architecture, culture,
-                and ancient healing. Here, wellness is not a trend; it&apos;s a way
-                of life. Every detail honors balance, tradition, and slow,
-                intentional living. This is your invitation to Breathe in
-                Tradition.
+                Nestled in the vibrant city of Kochi, Jo And Sams Villa offers a
+                perfect blend of traditional Kerala architecture and modern
+                comforts. This heritage villa provides an intimate experience of
+                Kerala&apos;s rich culture while being conveniently located near all
+                the attractions of Kochi. Experience authentic hospitality and
+                personalized service in this beautifully restored property.
               </p>
 
               <div className="grid grid-cols-3 gap-4 pt-4">
@@ -109,7 +128,7 @@ export default function ResortHome() {
                   <div className="bg-gray-100 rounded-full p-4 mb-3">
                     <Image
                       src="/resorts/house/featuredicons/icon1.png"
-                      alt="Coffee Estate"
+                      alt="Heritage Architecture"
                       width={32}
                       height={32}
                       className="h-8 w-8"
@@ -118,14 +137,14 @@ export default function ResortHome() {
                     />
                   </div>
                   <p className="text-xs md:text-sm font-bold">
-                    Restorative Ayurvedic therapies in a heritage Kerala home
+                    Authentic Kerala heritage architecture
                   </p>
                 </div>
                 <div className="flex flex-col items-center text-center">
                   <div className="bg-gray-100 rounded-full p-4 mb-3">
                     <Image
                       src="/resorts/house/featuredicons/icon2.png"
-                      alt="Heritage"
+                      alt="City Access"
                       width={32}
                       height={32}
                       className="h-8 w-8"
@@ -134,14 +153,14 @@ export default function ResortHome() {
                     />
                   </div>
                   <p className="text-xs md:text-sm font-bold">
-                    Authentic village setting surrounded by coconut groves
+                    Prime location with easy access to Kochi attractions
                   </p>
                 </div>
                 <div className="flex flex-col items-center text-center">
                   <div className="bg-gray-100 rounded-full p-4 mb-3">
                     <Image
                       src="/resorts/house/featuredicons/icon3.png"
-                      alt="Nature"
+                      alt="Personalized Service"
                       width={32}
                       height={32}
                       className="h-8 w-8"
@@ -150,7 +169,7 @@ export default function ResortHome() {
                     />
                   </div>
                   <p className="text-xs md:text-sm font-bold">
-                    Deep cultural immersion with healing as a way of life
+                    Personalized service and authentic local experiences
                   </p>
                 </div>
               </div>
@@ -161,75 +180,92 @@ export default function ResortHome() {
           <div className="md:w-1/2 flex flex-col space-y-4">
             <div className="relative">
               <Image
-                src="/resorts/house/bannersection.avif"
-                alt="Resort Home Main View"
+                src={currentBanner}
+                alt="Jo And Sams Villa Main View"
                 width={700}
                 height={500}
-                className="w-full h-72 md:h-96 object-cover rounded-lg"
+                className="w-full h-72 md:h-96 object-cover rounded-lg cursor-pointer"
                 quality={100}
+                onClick={toggleCarousel}
               />
+              {/* <div className="absolute bottom-4 right-4">
+                <button 
+                  className="bg-white bg-opacity-80 text-gray-800 px-3 py-1 rounded-md text-sm font-medium hover:bg-opacity-100 transition duration-200"
+                  onClick={toggleCarousel}
+                >
+                  {showCarousel ? "Hide Gallery" : "View Gallery"}
+                </button>
+              </div> */}
             </div>
 
-            <div className="relative mt-2">
-              <div className="absolute inset-y-0 left-0 z-10 flex items-center">
-                <button
-                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
-                  onClick={handlePrev}
-                  aria-label="Previous slide"
-                >
-                  <ChevronLeft className="h-5 w-5 text-gray-800" />
-                </button>
-              </div>
-
-              <div
-                ref={carouselRef}
-                className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
-                {galleryImages.map((image, index) => (
-                  <div
-                    key={index}
-                    className={`flex-shrink-0 cursor-pointer transition-opacity duration-300 ${
-                      activeSlide === index ? "opacity-100" : "opacity-70"
-                    }`}
+            {/* Gallery carousel - only shown when toggled */}
+            {showCarousel && (
+              <div className="relative mt-2 bg-gray-100 p-4 rounded-lg">
+                <div className="absolute inset-y-0 left-0 z-10 flex items-center">
+                  <button
+                    className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+                    onClick={handlePrev}
+                    aria-label="Previous slide"
                   >
-                    <Image
-                      src={image}
-                      alt={`Resort Home Gallery Image ${index + 1}`}
-                      width={120}
-                      height={80}
-                      className="h-16 w-24 object-cover rounded-md"
-                      quality={90}
-                    />
-                  </div>
-                ))}
-              </div>
+                    <ChevronLeft className="h-5 w-5 text-gray-800" />
+                  </button>
+                </div>
 
-              <div className="absolute inset-y-0 right-0 z-10 flex items-center">
-                <button
-                  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
-                  onClick={handleNext}
-                  aria-label="Next slide"
+                <div
+                  ref={carouselRef}
+                  className="flex overflow-x-auto scrollbar-hide gap-2 py-2 px-12"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
-                  <ChevronRight className="h-5 w-5 text-gray-800" />
-                </button>
+                  {galleryImages.map((image, index) => (
+                    <div
+                      key={index}
+                      className={`flex-shrink-0 cursor-pointer transition-all duration-300 ${
+                        activeSlide === index 
+                          ? "opacity-100 scale-105 border-2 border-green-500" 
+                          : "opacity-70 hover:opacity-90"
+                      }`}
+                      onClick={() => selectThumbnail(index)}
+                    >
+                      <Image
+                        src={image}
+                        alt={`Jo And Sams Villa Gallery Image ${index + 1}`}
+                        width={120}
+                        height={80}
+                        className="h-16 w-24 object-cover rounded-md"
+                        quality={90}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="absolute inset-y-0 right-0 z-10 flex items-center">
+                  <button
+                    className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+                    onClick={handleNext}
+                    aria-label="Next slide"
+                  >
+                    <ChevronRight className="h-5 w-5 text-gray-800" />
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
+      {/* </div> */}
+        {/* </div> */}
       </div>
 
       {/* Welcome Section */}
       <div className="relative mb-8">
         <div className="text-center py-8 px-4 md:px-8 bg-green-50">
           <h2 className="text-3xl font-serif text-green-800 mb-4">
-            Welcome to Resort Home
+            Welcome to Jo And Sams Villa
           </h2>
           <p className="max-w-3xl mx-auto text-sm md:text-base">
-            Step across the threshold of time. With every scent of herbal oil,
-            every chant carried on the breeze, and every bite of healing food,
-            you&apos;re wrapped in centuries of care. Here, you don&apos;t just experience
-            tradition—you breathe it in.
+            Experience the perfect blend of Kochi&apos;s vibrant culture and the
+            tranquility of a heritage home. Jo And Sams Villa offers a unique
+            opportunity to immerse yourself in Kerala&apos;s traditions while enjoying
+            modern comforts in the heart of the city.
           </p>
         </div>
 
@@ -240,7 +276,7 @@ export default function ResortHome() {
           >
             <Image
               src="/resorts/house/welcomesection.avif"
-              alt="Resort Home Villa with Forest View"
+              alt="Jo And Sams Villa with Traditional Courtyard"
               fill
               className="object-contain w-full h-full"
               quality={100}
@@ -259,33 +295,31 @@ export default function ResortHome() {
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Personalized Ayurvedic consultations and treatment plans
+                    Authentic Kerala heritage architecture with modern amenities
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Daily massages, herbal therapies, and steam baths
+                    Spacious rooms with traditional wooden furniture and decor
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Stay in a beautifully restored traditional mana with open
-                    courtyards and wooden pillars
+                    Central location near Fort Kochi attractions and beaches
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Village walks and lessons in Kerala&apos;s healing heritage
+                    Personalized service from knowledgeable local hosts
                   </span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
                   <span className="text-sm">
-                    Plant-based, Ayurvedic meals prepared using age-old recipes
-                    and local ingredients
+                    Authentic Kerala cuisine prepared with local ingredients
                   </span>
                 </li>
               </ul>
@@ -420,18 +454,20 @@ export default function ResortHome() {
         </div>
       </div>
 
-      {/* Why Choose This Retreat */}
+      {/* Why Choose This Villa */}
       <div className="mb-1">
         <div className="px-4 md:px-6">
           <h2 className="text-xl font-semibold text-center mb-4">
-            Why Choose This Retreat
+            Why Choose Jo And Sams Villa
           </h2>
           <p className="text-center mb-8 max-w-3xl mx-auto text-sm md:text-base">
-            Resort Home is a return to our roots. In a world that constantly
-            pulls us forward, this retreat draws you inward—toward balance,
-            tradition, and holistic wellness. If you&apos;re seeking healing that
-            honors the body, mind, and spirit through generations of wisdom,
-            Resort Home is where your journey begins, gently and deeply.
+            Jo And Sams Villa offers the perfect combination of heritage charm
+            and city convenience. Whether you&apos;re exploring Kochi&apos;s historic
+            sites, enjoying the local cuisine, or simply relaxing in our
+            beautiful courtyard, you&apos;ll experience authentic Kerala hospitality
+            at its finest. Our villa provides a peaceful retreat after a day of
+            city exploration, with all the comforts of home in a uniquely
+            beautiful setting.
           </p>
         </div>
 
@@ -442,7 +478,7 @@ export default function ResortHome() {
           >
             <Image
               src="/resorts/house/whychoose.avif"
-              alt="Coffee plantations and forest views"
+              alt="Jo And Sams Villa courtyard and traditional architecture"
               fill
               className="object-contain w-full h-full"
               quality={100}

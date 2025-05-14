@@ -155,7 +155,7 @@ const MembershipCard: FC<MembershipCardProps> = ({
 const MembershipSection: FC = () => {
   const goldBenefits = [
     {
-      text: "One Free Stay for 1 Night(2 pax/2 kids) Each Year at Any of our Jaipur Retreat property.",
+      text: "One Free Stay for 1 Night(2 pax/2 kids) Each Year at Any of our  ayamRetreat property.",
     },
     {
       text: "10% Discount on all associated resorts/homestays for additional stays during the year.",
@@ -170,7 +170,7 @@ const MembershipSection: FC = () => {
 
   const platinumBenefits = [
     {
-      text: "One Free Stay for 2 Nights(2 pax/2 kids) Each Year at Any of our Jaipur Retreat property.",
+      text: "One Free Stay for 2 Nights(2 pax/2 kids) Each Year at Any of our  ayamRetreat property.",
     },
     {
       text: "50% Discount on all associated resorts/homestays for additional stays during the year.",

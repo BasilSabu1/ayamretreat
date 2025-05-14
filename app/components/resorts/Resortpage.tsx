@@ -12,7 +12,9 @@ type Resort = {
   name: string;
   location: string;
   image: string;
-  state: string;
+  district: string;
+  slug: string;
+  price?: number;
 };
 
 // Sample data
@@ -20,81 +22,85 @@ const resorts: Resort[] = [
   {
     id: "1",
     name: " Jo And Sams Villa",
-    location: "Kochi, Kerala",
+    location: "Kochi",
     image: "/resorts/home.avif",
-    state: "Kerala",
+    district: "Ernakulam",
+    slug: "jo-and-sams-villa",
+    price: 5500,
   },
   // {
   //   id: "2",
   //   name: "Ocean Breeze",
   //   location: "Varkala, Kerala",
   //   image: "/resorts/home.avif",
-  //   state: "Kerala",
+  //   district: "Kerala",
+  //   price: 5500,
   // },
   {
     id: "3",
     name: "Saantara",
     location: "Palakkad",
-    image: "/resorts/saantara.png",
-    state: "Kerala",
+    image: "/resorts/vayaloram.png",
+    district: "Palakkad",
+    slug: "saantara",
+    // price: 3800,
   },
   {
     id: "4",
     name: "Drifters Valley",
     location: "Nedumkandam",
     image: "/resorts/driftersvalley.png",
-    state: "Kerala",
+    district: "Idukki",
+    slug: "drifters-valley",
+    // price: 5200,
   },
   {
     id: "5",
     name: "Vayaloram",
     location: "Kuttanad",
-    image: "/resorts/vayaloram.png",
-    state: "Kerala",
+    image: "/resorts/saantara.png",
+    district: "Alappuzha",
+    slug: "vayaloram",
+    // price: 4900,
   },
   {
     id: "6",
     name: "Adventure Bay",
     location: "Marari",
     image: "/resorts/adventurebay.png",
-    state: "Kerala",
+    district: "Alappuzha",
+    slug: "adventure-bay",
+    // price: 4200,
   },
   {
     id: "7",
     name: "kailasam",
     location: "Idukki",
     image: "/resorts/kailasam.png",
-    state: "Kerala",
+    district: "Idukki",
+    slug: "kailasam",
+    // price: 5600,
   },
-  // {
-  //   id: "8",
-  //   name: "Beach Paradise",
-  //   location: "Goa",
-  //   image: "/resorts/driftersvalley.png",
-  //   state: "Goa",
-  // },
 ];
 
-// Get unique states
-const states = [
+// Get unique districts
+const districts = [
   "All",
-  ...Array.from(new Set(resorts.map((resort) => resort.state))),
+  ...Array.from(new Set(resorts.map((resort) => resort.district))),
 ];
 
 export default function PartnerResorts() {
-  const [activeState, setActiveState] = useState("All");
+  const [activeDistrict, setActiveDistrict] = useState("All");
   const router = useRouter();
 
   const filteredResorts =
-    activeState === "All"
+    activeDistrict === "All"
       ? resorts
-      : resorts.filter((resort) => resort.state === activeState);
+      : resorts.filter((resort) => resort.district === activeDistrict);
 
-  const handleKnowMore = (resortId: string, resortName: string) => {
-    const slug = resortName.toLowerCase().replace(/\s+/g, "-");
-    router.push(`/resorts/${slug}?id=${resortId}`);
+  const handleKnowMore = (resortId: string, resortSlug: string) => {
+    router.push(`/resorts/${resortSlug}?id=${resortId}`);
   };
-
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
@@ -114,20 +120,20 @@ export default function PartnerResorts() {
           Explore our wide network of retreats
         </h2>
 
-        {/* State Tabs */}
+        {/* District Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {states.map((state) => (
+          {districts.map((district) => (
             <button
-              key={state}
-              onClick={() => setActiveState(state)}
+              key={district}
+              onClick={() => setActiveDistrict(district)}
               className={`rounded-full px-4 py-1 text-sm border ${
-                activeState === state
+                activeDistrict === district
                   ? "bg-black text-white border-black"
                   : "bg-white text-black border-gray-300 hover:border-black"
               }`}
-              aria-pressed={activeState === state}
+              aria-pressed={activeDistrict === district}
             >
-              {state}
+              {district}
             </button>
           ))}
         </div>
@@ -135,7 +141,31 @@ export default function PartnerResorts() {
         {/* Resort Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredResorts.map((resort) => (
-            <div key={resort.id} className="rounded overflow-hidden shadow-md">
+            <div
+              key={resort.id}
+              className={`rounded overflow-hidden shadow-md ${
+                resort.id === "1" ? "border-2 border-amber-500 relative" : ""
+              }`}
+            >
+              {resort.id === "1" && (
+                <div className="absolute top-3 right-3 bg-amber-500 text-white px-2 py-1 rounded-md z-10 shadow-md flex items-center space-x-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                    />
+                  </svg>
+                  <span className="font-semibold text-xs">FEATURED</span>
+                </div>
+              )}
               <div className="relative h-48">
                 <Image
                   src={resort.image}
@@ -147,12 +177,36 @@ export default function PartnerResorts() {
               <div className="p-4">
                 <h3 className="font-semibold text-lg">{resort.name}</h3>
                 <p className="text-gray-600 text-sm mb-3">{resort.location}</p>
-                <button
-                  onClick={() => handleKnowMore(resort.id, resort.name)}
-                  className="bg-black text-white text-xs px-3 py-1 rounded-sm hover:bg-gray-800"
-                >
-                  Know More
-                </button>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center text-sm">
+                    <span className="font-medium text-gray-800">
+                      {resort.price && (
+                        <div className="text-gray-800 font-medium">
+                          <div className="text-black text-xl font-bold">
+                            ₹{resort.price.toLocaleString()}
+                          </div>
+                          <div className="flex items-center space-x-2 text-sm">
+                            <span className="line-through text-gray-500">
+                              ₹11,000
+                            </span>
+                            <span className="text-green-600 font-semibold">
+                              {Math.round(
+                                ((11000 - resort.price) / 11000) * 100
+                              )}
+                              % off
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => handleKnowMore(resort.id, resort.slug)}
+                    className="bg-black text-white text-xs px-3 py-1 rounded-sm hover:bg-gray-800"
+                  >
+                    Know More
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -184,7 +238,7 @@ export default function PartnerResorts() {
         <div className="bg-gray-50 p-6 rounded">
           <h3 className="font-semibold mb-2">One stay free for 2 guests</h3>
           <p className="text-sm text-gray-600 mb-4">
-            Every year for 3 years at any of our Ayatana properties
+            Every year for 3 years at any of our AyamRetreat properties
           </p>
 
           <h3 className="font-semibold mb-2">2-30% Discount on all stays</h3>

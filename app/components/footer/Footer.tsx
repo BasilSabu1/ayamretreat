@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
                       alt="AyAm Retreat Logo"
                       width={48}
                       height={48}
-                      className="h-12 w-auto mx-auto" // <-- Center image itself
+                      className="h-12 w-auto mx-auto"
                       unoptimized
                     />
                   </div>
@@ -28,27 +28,24 @@ const Footer: React.FC = () => {
               </Link>
             </div>
             <p className="text-gray-600 text-sm mb-4 text-center md:text-left">
-            Discover exclusive resort experiences with our subscription plans - your getaway, anytime you need it.
-
+              Discover exclusive resort experiences with our subscription plans
+              - your getaway, anytime you need it.
             </p>
             <div className="flex space-x-4 mb-4">
-              <Link href="#" aria-label="Facebook">
-                <div className="text-blue-500">
-                  <FaFacebookF size={16} />
-                </div>
-              </Link>
-              <Link href="#" aria-label="Twitter">
-                <div className="text-blue-400">
-                  <FaTwitter size={16} />
-                </div>
-              </Link>
-              <Link href="#" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/ayamretreat/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
                 <div className="text-blue-500">
                   <FaInstagram size={16} />
                 </div>
-              </Link>
+              </a>
             </div>
-            <p className="text-gray-400 text-xs text-center md:text-left">© 2025 Ayam Retreat. All rights reserved.</p>
+            <p className="text-gray-400 text-xs text-center md:text-left">
+              © 2025 Ayam Retreat. All rights reserved.
+            </p>
           </div>
 
           {/* Product Column */}
@@ -57,10 +54,10 @@ const Footer: React.FC = () => {
             <ul className="space-y-2 text-center md:text-left">
               <li>
                 <Link
-                  href="/Retreats"
+                  href="/retreats"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Retreats 
+                  Retreats
                 </Link>
               </li>
               <li>
@@ -68,7 +65,7 @@ const Footer: React.FC = () => {
                   href="/Experiences"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Experiences 
+                  Experiences
                 </Link>
               </li>
               <li>
@@ -76,7 +73,7 @@ const Footer: React.FC = () => {
                   href="/gallery"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Gallery 
+                  Gallery
                 </Link>
               </li>
               <li>
@@ -84,7 +81,7 @@ const Footer: React.FC = () => {
                   href="/blog"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
-                  Blog 
+                  Blog
                 </Link>
               </li>
             </ul>
@@ -112,7 +109,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/about-us"
+                  href="/aboutus"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
                   About Us
