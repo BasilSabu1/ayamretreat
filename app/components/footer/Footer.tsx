@@ -117,7 +117,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/privacy-policy"
+                  href="/privacypolicy"
                   className="text-gray-600 hover:text-blue-500 text-sm"
                 >
                   Privacy Policy

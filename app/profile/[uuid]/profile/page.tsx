@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import axiosInstance from "@/app/components/apiconfig/axios";
 import { API_URLS } from "@/app/components/apiconfig/api_urls";
@@ -67,33 +67,6 @@ export default function ProfileContent() {
     message: "",
   });
 
-  useEffect(() => {
-    const loadUserData = async () => {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        const parsedUser = JSON.parse(storedUser);
-        setCurrentUser(parsedUser);
-
-        // Extract names immediately from stored user
-        if (parsedUser.username) {
-          const nameParts = parsedUser.username.split(" ");
-          setFirstName(nameParts[0] || "User");
-          setLastName(nameParts.slice(1).join(" ") || "");
-        } else if (parsedUser.full_name) {
-          const nameParts = parsedUser.full_name.split(" ");
-          setFirstName(nameParts[0] || "User");
-          setLastName(nameParts.slice(1).join(" ") || "");
-        }
-
-        // Now fetch profile with the parsedUser directly
-        await fetchUserProfile(parsedUser);
-        await fetchUserAddress(parsedUser);
-      }
-    };
-
-    loadUserData();
-  }, []);
-
   // Update form data when profile data changes
   useEffect(() => {
     if (currentUser && profileData) {
@@ -128,55 +101,88 @@ export default function ProfileContent() {
     }
   }, [userAddress]);
 
-  const fetchUserProfile = async (user?: User) => {
-    try {
-      const response = await axiosInstance.get(
-        API_URLS.REGISTRATION.GET_REGISTRATION
-      );
-
-      if (Array.isArray(response.data)) {
-        const userToFind = user || currentUser;
-        if (!userToFind) return;
-
-        const userProfile = response.data.find(
-          (u: User) => u.uuid === userToFind.uuid
+  const fetchUserProfile = useCallback(
+    async (user?: User) => {
+      try {
+        const response = await axiosInstance.get(
+          API_URLS.REGISTRATION.GET_REGISTRATION
         );
 
-        if (userProfile) {
-          setProfileData(userProfile);
+        if (Array.isArray(response.data)) {
+          const userToFind = user || currentUser;
+          if (!userToFind) return;
+
+          const userProfile = response.data.find(
+            (u: User) => u.uuid === userToFind.uuid
+          );
+
+          if (userProfile) {
+            setProfileData(userProfile);
+          } else {
+            console.error("No matching profile found");
+          }
         } else {
-          console.error("No matching profile found");
+          setProfileData(response.data);
         }
-      } else {
-        setProfileData(response.data);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
       }
-    } catch (error) {
-      console.error("Error fetching profile:", error);
-    }
-  };
+    },
+    [currentUser]
+  );
 
-  const fetchUserAddress = async (user?: User) => {
-    try {
-      const response = await axiosInstance.get(API_URLS.ADDRESS.GET_ADDRESS);
-      const userToFind = user || currentUser;
+  const fetchUserAddress = useCallback(
+    async (user?: User) => {
+      try {
+        const response = await axiosInstance.get(API_URLS.ADDRESS.GET_ADDRESS);
+        const userToFind = user || currentUser;
 
-      if (userToFind) {
-        const userAddr = response.data.find(
-          (addr: Address) => addr.user_details.uuid === userToFind.uuid
-        );
-        setUserAddress(userAddr || null);
-        if (userAddr) {
-          setAddressData({
-            address: userAddr.address || "",
-            image: null,
-            user_uuid: userAddr.user_details.uuid || "",
-          });
+        if (userToFind) {
+          const userAddr = response.data.find(
+            (addr: Address) => addr.user_details.uuid === userToFind.uuid
+          );
+          setUserAddress(userAddr || null);
+          if (userAddr) {
+            setAddressData({
+              address: userAddr.address || "",
+              image: null,
+              user_uuid: userAddr.user_details.uuid || "",
+            });
+          }
         }
+      } catch (error) {
+        console.error("Error fetching address:", error);
       }
-    } catch (error) {
-      console.error("Error fetching address:", error);
-    }
-  };
+    },
+    [currentUser]
+  );
+
+  useEffect(() => {
+    const loadUserData = async () => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        const parsedUser = JSON.parse(storedUser);
+        setCurrentUser(parsedUser);
+
+        // Extract names immediately from stored user
+        if (parsedUser.username) {
+          const nameParts = parsedUser.username.split(" ");
+          setFirstName(nameParts[0] || "User");
+          setLastName(nameParts.slice(1).join(" ") || "");
+        } else if (parsedUser.full_name) {
+          const nameParts = parsedUser.full_name.split(" ");
+          setFirstName(nameParts[0] || "User");
+          setLastName(nameParts.slice(1).join(" ") || "");
+        }
+
+        // Now fetch profile with the parsedUser directly
+        await fetchUserProfile(parsedUser);
+        await fetchUserAddress(parsedUser);
+      }
+    };
+
+    loadUserData();
+  }, [fetchUserAddress, fetchUserProfile]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -385,7 +391,7 @@ export default function ProfileContent() {
           Hi {firstName}!
         </h1>
         <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-600 mt-2 sm:mt-0">
-          778 pts
+          0 pts
         </div>
       </div>
 

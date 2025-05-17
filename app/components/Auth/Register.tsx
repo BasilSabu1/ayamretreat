@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { API_URLS } from "../apiconfig/api_urls";
 import { auth } from "./firebase";
 import {
-//   RecaptchaVerifier,
+  //   RecaptchaVerifier,
   signInWithPhoneNumber,
   PhoneAuthProvider,
   signInWithCredential,
@@ -45,7 +45,15 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
   const [otpMessage, setOtpMessage] = useState<string>("");
   const [phoneVerified, setPhoneVerified] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [centeredAlert, setCenteredAlert] = useState<{
+    isVisible: boolean;
+    title: string;
+    message: string;
+  }>({
+    isVisible: false,
+    title: "",
+    message: "",
+  });
   // Set up recaptcha on component mount
   useEffect(() => {
     if (isOpen) {
@@ -234,6 +242,19 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
     }
   };
 
+  const showCenteredAlert = (title: string, message: string): void => {
+    setCenteredAlert({
+      isVisible: true,
+      title,
+      message,
+    });
+
+    // Automatically hide the alert after 3 seconds
+    setTimeout(() => {
+      setCenteredAlert((prev) => ({ ...prev, isVisible: false }));
+    }, 3000);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -270,6 +291,10 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
         })
       );
 
+      showCenteredAlert(
+        "Your Sign In  Successfully",
+        "Welcome back to AYAM Retreat! Your relaxation journey awaits."
+      );
       onClose();
     } catch (err) {
       if (err instanceof Error) {
@@ -489,6 +514,45 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
           </p>
         </div>
       </div>
+
+      {centeredAlert.isVisible && (
+        <div className="fixed inset-0 flex items-center justify-center z-50  bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-11/12 mx-auto text-center transform transition-colors duration-300 ease-in-out translate-y-0 opacity-100">
+            <div className="mb-4 text-green-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-12 w-12 mx-auto text-green-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+
+            <h3 className="text-xl font-medium text-gray-900 mb-2">
+              {centeredAlert.title}
+            </h3>
+
+            <p className="text-gray-600 mb-6">{centeredAlert.message}</p>
+
+            <button
+              onClick={() => {
+                setCenteredAlert((prev) => ({ ...prev, isVisible: false }));
+                onClose(); // Close the modal after dismissing the alert
+              }}
+              className="w-full p-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition-colors font-medium text-sm"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

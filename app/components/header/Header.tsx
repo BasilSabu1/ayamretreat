@@ -308,7 +308,7 @@ export default function Header() {
                     </div>
                   )}
                 </div>
-                <span>{user.username || user.email}</span>
+                <span>{user.full_name}</span>
                 <ChevronDown size={16} className="ml-1" />
               </div>
 
@@ -353,12 +353,12 @@ export default function Header() {
                 >
                   Login
                 </button>
-                <button
+                {/* <button
                   onClick={() => setRegisterModalOpen(true)}
                   className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100"
                 >
                   Register
-                </button>
+                </button> */}
               </div>
             </div>
           )}
@@ -374,48 +374,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Construction notice banner with automatic carousel effect */}
-      <div className="w-full bg-gray-100 overflow-hidden whitespace-nowrap py-2 text-sm relative z-40">
-        <div className="marquee relative flex overflow-x-hidden">
-          <div className="marquee-content py-0 animate-marquee whitespace-nowrap flex">
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-          </div>
-
-          <div className="marquee-content absolute top-0 py-0 animate-marquee2 whitespace-nowrap flex">
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-            <span className="mx-4 text-lg">
-              • Website currently under construction{" "}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg absolute top-16 right-0 left-0 z-30">
           <nav className="flex flex-col px-4 py-2">
@@ -512,31 +470,42 @@ export default function Header() {
 
             {user ? (
               <>
-                <div className="py-2 text-gray-800 flex items-center">
-                  {/* User profile image in mobile menu */}
-                  <div className="h-8 w-8 rounded-full overflow-hidden mr-2 border border-gray-200">
-                    {userAddress && userAddress.image ? (
-                      <Image
-                        src={userAddress.image}
-                        alt="User profile"
-                        width={32}
-                        height={32}
-                        className="h-full w-full object-cover"
-                        unoptimized
-                      />
-                    ) : (
-                      <div className="h-full w-full bg-blue-100 flex items-center justify-center">
-                        <User size={18} className="text-blue-500" />
-                      </div>
-                    )}
+                <div className="py-3 border-t border-gray-100 mt-2">
+                  <div className="flex items-center space-x-3 px-2">
+                    {/* User profile image in mobile menu */}
+                    <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-blue-100 shadow-sm">
+                      {userAddress && userAddress.image ? (
+                        <Image
+                          src={userAddress.image}
+                          alt="User profile"
+                          width={48}
+                          height={48}
+                          className="h-full w-full object-cover"
+                          unoptimized
+                        />
+                      ) : (
+                        <div className="h-full w-full bg-blue-100 flex items-center justify-center">
+                          <User size={24} className="text-blue-500" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-medium text-gray-800">
+                        {user.full_name}
+                      </span>
+                      <span className="text-xs text-gray-500 truncate max-w-[200px]">
+                        {user.email}
+                      </span>
+                    </div>
                   </div>
-                  <span>{user.username || user.email}</span>
                 </div>
+
                 <div className="relative">
                   <button
                     onClick={navigateToProfile}
-                    className="w-full text-left py-2 text-gray-800 hover:text-blue-500 pl-8"
+                    className="w-full text-left py-2.5 text-gray-800 hover:bg-gray-50 px-2 rounded flex items-center"
                   >
+                    <User size={18} className="mr-2 text-blue-500" />
                     Profile
                   </button>
                   {isLinkLoading(`/profile/${user?.uuid}`) && (
@@ -547,34 +516,81 @@ export default function Header() {
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="py-2 text-blue-500 hover:underline pl-8"
+                  className="w-full text-left py-2.5 text-gray-800 hover:bg-gray-50 px-2 rounded flex items-center"
                 >
-                  Logout
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mr-2 text-blue-500"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                  </svg>
+                  Sign Out
                 </button>
               </>
             ) : (
-              <>
+              <div className="flex flex-col space-y-2 pt-2 border-t border-gray-100 mt-2">
                 <button
                   onClick={() => {
                     setLoginModalOpen(true);
                     closeMobileMenu();
                   }}
-                  className="py-2 text-gray-800 hover:text-blue-500 flex items-center"
+                  className="py-2.5 px-3 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg transition-colors duration-200 flex items-center"
                 >
-                  <User size={20} className="mr-2" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mr-2"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                    <polyline points="10 17 15 12 10 7"></polyline>
+                    <line x1="15" y1="12" x2="3" y2="12"></line>
+                  </svg>
                   Login
                 </button>
-                <button
+                {/* <button
                   onClick={() => {
                     setRegisterModalOpen(true);
                     closeMobileMenu();
                   }}
-                  className="py-2 text-gray-800 hover:text-blue-500 flex items-center"
+                  className="py-2.5 px-3 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-lg transition-colors duration-200 flex items-center"
                 >
-                  <User size={20} className="mr-2" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mr-2"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7" r="4"></circle>
+                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                  </svg>
                   Register
-                </button>
-              </>
+                </button> */}
+              </div>
             )}
           </nav>
         </div>
@@ -597,49 +613,6 @@ export default function Header() {
           setLoginModalOpen(true);
         }}
       />
-
-      {/* Adding the required CSS for animations */}
-      <style jsx global>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-
-        @keyframes marquee2 {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-
-        .animate-marquee {
-          animation: marquee 25s linear infinite;
-        }
-
-        .animate-marquee2 {
-          animation: marquee2 25s linear infinite;
-        }
-
-        @keyframes pulse {
-          0%,
-          100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.5;
-          }
-        }
-
-        .animate-pulse {
-          animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-      `}</style>
     </div>
   );
 }

@@ -1,14 +1,33 @@
-"use client"
+"use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import axiosInstance from "../apiconfig/axios";
+import { API_URLS } from "../apiconfig/api_urls";
 
 interface RetreatCardProps {
   id: number;
   imageSrc: string;
   title: string;
   location: string;
+}
+
+interface ResortData {
+  id: string;
+  name: string;
+  location: string;
+  image: string;
+  place:
+    | {
+        id: number;
+        name: string;
+      }
+    | number; // Place can be an object with id and name properties or just a number
+  description: string;
+  price: number;
+  slug: string;
+  is_featured?: boolean;
 }
 
 const RetreatCard: React.FC<RetreatCardProps> = ({
@@ -33,6 +52,7 @@ const RetreatCard: React.FC<RetreatCardProps> = ({
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          unoptimized // Add this to bypass image optimization for external URLs
         />
       </div>
       <div className="p-3">
@@ -51,8 +71,8 @@ const RetreatCard: React.FC<RetreatCardProps> = ({
   );
 };
 
-// Example data for the retreats
-const retreats = [
+// Example data for the retreats (fallback data)
+const dummyRetreats = [
   {
     id: 1,
     title: "Drifters Valley",
@@ -86,6 +106,59 @@ const retreats = [
 ];
 
 const RetreatSection: React.FC = () => {
+  const [resorts, setResorts] = useState<ResortData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetchResorts();
+  }, []);
+
+  const fetchResorts = async () => {
+    try {
+      setLoading(true);
+      setError(false);
+
+      // Fetch resorts data
+      const resortsResponse = await axiosInstance.get(
+        API_URLS.RESORTS.GET_RESORTS
+      );
+
+      if (resortsResponse.data && Array.isArray(resortsResponse.data)) {
+        setResorts(resortsResponse.data);
+      } else {
+        console.warn(
+          "Invalid resort data format received, using fallback data"
+        );
+        setError(true);
+      }
+    } catch (error) {
+      console.error("Error fetching resort data:", error);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Transform API resort data to match the format needed for RetreatCard
+  const getRetreatData = () => {
+    if (error || !resorts.length) {
+      return dummyRetreats; // Use dummy data if API call failed or no data
+    }
+
+    return resorts.map((resort) => ({
+      id: parseInt(resort.id),
+      title: resort.name,
+      location:
+        typeof resort.place === "object"
+          ? resort.place.name
+          : resort.location || "Kerala",
+      imageSrc: resort.image, // Use the full image URL directly from the API
+    }));
+  };
+
+  const displayRetreats = getRetreatData();
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Hero section */}
@@ -179,17 +252,21 @@ const RetreatSection: React.FC = () => {
       {/* Retreat cards section */}
       <div>
         <h2 className="text-3xl font-bold mb-8 text-center">Our Retreats</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {retreats.map((retreat) => (
-            <RetreatCard
-              key={retreat.id}
-              id={retreat.id}
-              imageSrc={retreat.imageSrc}
-              title={retreat.title}
-              location={retreat.location}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <div className="text-center py-8">Loading retreats...</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayRetreats.map((retreat) => (
+              <RetreatCard
+                key={retreat.id}
+                id={retreat.id}
+                imageSrc={retreat.imageSrc}
+                title={retreat.title}
+                location={retreat.location}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
