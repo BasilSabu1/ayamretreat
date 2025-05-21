@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import axiosInstance from "@/app/components/apiconfig/axios";
+import { API_URLS } from "@/app/components/apiconfig/api_urls";
 
 interface User {
   uuid: string;
@@ -13,13 +15,34 @@ interface User {
   firebase_user_id?: string;
 }
 
+interface Points {
+  uuid: string;
+  points: string;
+}
+
 export default function RewardPoints() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [firstName, setFirstName] = useState("");
-
+  const [userpoints, setuserpoints] = useState<Points[]>([]);
 
   console.log(currentUser);
-  
+
+  const fetchPoints = async () => {
+    try {
+      const response = await axiosInstance.get(
+        API_URLS.POINTS.GET_POINTS
+      );
+      setuserpoints(response.data);
+    } catch (err) {
+      console.error("Error fetching points:", err);
+      console.log("Failed to fetch points data");
+    }
+  };
+
+  useEffect(() => {
+    fetchPoints();
+  }, []);
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -30,6 +53,9 @@ export default function RewardPoints() {
       setFirstName(first);
     }
   }, []);
+
+  // Get the user's points (assuming the API returns an array with at least one item)
+  const userPoints = userpoints.length > 0 ? parseInt(userpoints[0].points) : 0;
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden mx-auto w-full max-w-6xl overflow-y-auto">
@@ -60,7 +86,7 @@ export default function RewardPoints() {
           <div className="flex flex-col items-center justify-center space-y-6 w-full max-w-lg">
             {/* Points Display */}
             <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
-              778 pts
+              {userPoints} pts
             </div>
 
             {/* Description */}
@@ -68,7 +94,6 @@ export default function RewardPoints() {
               Redeem your reward coins by clicking the below button
             </p>
 
-           
             <button className="bg-white text-blue-500 px-4 py-2 sm:px-6 sm:py-3 rounded-md font-medium hover:bg-gray-100 transition-colors text-xs sm:text-sm md:text-base">
               Redeem Now
             </button>

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { auth } from "./firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+// import { signInWithEmailAndPassword } from "firebase/auth";
 import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
@@ -32,14 +32,15 @@ interface User {
   phone_number: string;
   dob: string;
   gender: string;
+  password?: string;
   firebase_user_id?: string;
 }
 
-interface AlertProps {
-  type: "success" | "error";
-  message: string;
-  isVisible: boolean;
-}
+// interface AlertProps {
+//   type: "success" | "error";
+//   message: string;
+//   isVisible: boolean;
+// }
 
 const ImprovedLoginModal: React.FC<LoginModalProps> = ({
   isOpen,
@@ -66,10 +67,14 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
   const [success, setSuccess] = useState<string>("");
 
   // Alert states
-  const [alert, setAlert] = useState<AlertProps>({
-    type: "success",
-    message: "",
+  const [centeredAlert, setCenteredAlert] = useState<{
+    isVisible: boolean;
+    title: string;
+    message: string;
+  }>({
     isVisible: false,
+    title: "",
+    message: "",
   });
 
   // Data states
@@ -79,7 +84,9 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
   useEffect(() => {
     if (isOpen) {
       fetchUsers();
-      setupRecaptcha();
+      if (activeTab === "phone") {
+        setupRecaptcha();
+      }
     }
 
     // Cleanup
@@ -89,7 +96,7 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
         recaptchaContainer.innerHTML = "";
       }
     };
-  }, [isOpen]);
+  }, [isOpen, activeTab]);
 
   const fetchUsers = async () => {
     try {
@@ -99,15 +106,13 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
       setAllUsers(response.data);
     } catch (err) {
       console.error("Error fetching users:", err);
+      setError("Failed to fetch user data");
     }
   };
 
-
-  console.log(allUsers);
-  
-  // Setup reCAPTCHA
+  // Setup reCAPTCHA only for phone authentication
   const setupRecaptcha = () => {
-    if (!window.recaptchaVerifier) {
+    if (!window.recaptchaVerifier && activeTab === "phone") {
       try {
         window.recaptchaVerifier = new RecaptchaVerifier(
           auth,
@@ -126,21 +131,22 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
     }
   };
 
-  // Show alert function
-  const showAlert = (type: "success" | "error", message: string) => {
-    setAlert({
-      type,
-      message,
+  // Show alert function with creative success styling
+  // Show alert function with creative success styling
+  const showCenteredAlert = (title: string, message: string): void => {
+    setCenteredAlert({
       isVisible: true,
+      title,
+      message,
     });
 
-    // Auto-hide after 5 seconds
+    // Automatically hide the alert after 3 seconds
     setTimeout(() => {
-      setAlert((prev) => ({ ...prev, isVisible: false }));
-    }, 5000);
+      setCenteredAlert((prev) => ({ ...prev, isVisible: false }));
+    }, 3000);
   };
 
-  // Email login handler
+  // Email login handler - MODIFIED
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -148,19 +154,18 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
     setLoading(true);
 
     try {
-      // First verify if the user exists in our database
-      const userExists = allUsers.find((user) => user.email === email);
+      // Check if user exists in your database first
+      const userExists = allUsers.find(
+        (user) => user.email === email && user.password === password
+      );
 
       if (!userExists) {
-        setError("User with this email doesn't exist");
+        setError("Invalid email or password");
         setLoading(false);
         return;
       }
 
-      // Then try to authenticate with Firebase
-      await signInWithEmailAndPassword(auth, email, password);
-
-      // Store user info in localStorage
+      // User exists in the database, so store info and proceed
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -174,26 +179,21 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
         })
       );
 
-      showAlert("success", "Login successful! Redirecting...");
+      // Show success alert
+      showCenteredAlert(
+        "Your Sign In  Successfully",
+        "Welcome back to AYAM Retreat! Your relaxation journey awaits."
+      );
 
-      // Close the modal after a brief delay to show success message
+      // Close modal after delay
       setTimeout(() => {
         onClose();
       }, 2000);
     } catch (err) {
       console.error("Login error:", err);
-      if (err instanceof Error) {
-        if (
-          err.message.includes("wrong-password") ||
-          err.message.includes("user-not-found")
-        ) {
-          setError("Invalid email or password");
-        } else {
-          setError(err.message);
-        }
-      } else {
-        setError("An unknown error occurred during login");
-      }
+      setError(
+        "Failed to sign in. Please check your credentials and try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -239,16 +239,12 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
 
       setVerificationId(result.verificationId);
       setOtpSent(true);
-      setSuccess("OTP sent successfully!");
+      setSuccess("OTP sent successfully to your phone!");
     } catch (err) {
       console.error("Error sending OTP:", err);
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError(
-          "Failed to send OTP. Please check your phone number and try again."
-        );
-      }
+      setError(
+        "Failed to send OTP. Please check your phone number and try again."
+      );
 
       // Reset recaptcha for retry
       if (window.recaptchaVerifier) {
@@ -313,22 +309,24 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
         })
       );
 
-      showAlert("success", "Login successful! Redirecting...");
-      // Close the modal after a brief delay
+      // Show creative success alert
+      // showAlert(
+      //   "success",
+      //   "Welcome back! Successfully signed in to your AYAM Retreat account!"
+      // );
+
+      showCenteredAlert(
+        "Your Sign In  Successfully",
+        "Welcome back to AYAM Retreat! Your relaxation journey awaits."
+      );
+
+      // Close modal after delay
       setTimeout(() => {
         onClose();
       }, 2000);
     } catch (err) {
       console.error("OTP verification error:", err);
-      if (err instanceof Error) {
-        if (err.message.includes("invalid-verification-code")) {
-          setError("Invalid OTP. Please check and try again.");
-        } else {
-          setError(err.message);
-        }
-      } else {
-        setError("OTP verification failed");
-      }
+      setError("Invalid OTP. Please check and try again.");
     } finally {
       setLoading(false);
     }
@@ -346,87 +344,21 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
     setSuccess("");
     setOtpSent(false);
     setOtp("");
+    setEmail("");
+    setPassword("");
+    setPhoneNumber("");
+
+    // Set up recaptcha if switching to phone tab
+    if (tab === "phone") {
+      setupRecaptcha();
+    }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
+    <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-opacity-50 z-50 p-4">
       {/* Alert Component */}
-      {alert.isVisible && (
-        <div
-          className={`fixed top-4 right-4 p-4 rounded-lg shadow-lg max-w-md transform transition-all duration-500 animate-slide-in flex items-center ${
-            alert.type === "success"
-              ? "bg-green-100 text-green-800"
-              : "bg-red-100 text-red-800"
-          }`}
-        >
-          <div
-            className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center mr-4 ${
-              alert.type === "success" ? "bg-green-200" : "bg-red-200"
-            }`}
-          >
-            {alert.type === "success" ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-green-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-red-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            )}
-          </div>
-          <div>
-            <h3
-              className={`font-bold ${
-                alert.type === "success" ? "text-green-800" : "text-red-800"
-              }`}
-            >
-              {alert.type === "success" ? "Success" : "Error"}
-            </h3>
-            <p className="text-sm">{alert.message}</p>
-          </div>
-          <button
-            onClick={() => setAlert((prev) => ({ ...prev, isVisible: false }))}
-            className="ml-auto text-gray-500 hover:text-gray-700"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
-      )}
 
       <div className="bg-white rounded-lg overflow-hidden w-full max-w-4xl flex shadow-xl">
         {/* Left side - Image */}
@@ -435,9 +367,9 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
             <Image
               src="/loginimage.png"
               alt="AYAM Retreat"
-              fill // makes the image fill the parent div
+              fill
               className="object-cover"
-              priority // optional: improve performance on important images
+              priority
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-transparent flex items-end p-8">
@@ -845,6 +777,45 @@ const ImprovedLoginModal: React.FC<LoginModalProps> = ({
             </button>
           </p>
         </div>
+
+        {centeredAlert.isVisible && (
+          <div className="fixed inset-0 flex items-center justify-center z-50  bg-opacity-50">
+            <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-11/12 mx-auto text-center transform transition-colors duration-300 ease-in-out translate-y-0 opacity-100">
+              <div className="mb-4 text-green-500">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-12 w-12 mx-auto text-green-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+
+              <h3 className="text-xl font-medium text-gray-900 mb-2">
+                {centeredAlert.title}
+              </h3>
+
+              <p className="text-gray-600 mb-6">{centeredAlert.message}</p>
+
+              <button
+                onClick={() => {
+                  setCenteredAlert((prev) => ({ ...prev, isVisible: false }));
+                  onClose(); // Close the modal after dismissing the alert
+                }}
+                className="w-full p-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition-colors font-medium text-sm"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
